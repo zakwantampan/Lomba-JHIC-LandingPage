@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import {
   ChevronRight,
   ChevronLeft,
+  ChevronDown,
   Award,
   Phone,
   Mail,
@@ -499,10 +500,19 @@ function LandingPage() {
     },
   ];
 
+  const LAYANAN_DIGITAL = [
+  { id: "bkk",  label: "BKK",  desc: "Bursa Kerja Khusus",      href: "#", Icon: Briefcase },
+  { id: "spmb", label: "SPMB", desc: "Penerimaan Murid Baru",   href: "#", Icon: Users },
+  { id: "blud", label: "BLUD", desc: "Produk & Layanan Sekolah", href: "#", Icon: ShoppingBag },
+];
+
   // Navigation & UI state
   const [activeSection, setActiveSection] = useState("beranda");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [layananOpen, setLayananOpen] = useState(false);
+const [mobileLayananOpen, setMobileLayananOpen] = useState(false);
+const layananRef = useRef(null);
 
   // Carousel State
   const [currentAchievement, setCurrentAchievement] = useState(0);
@@ -546,6 +556,19 @@ function LandingPage() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  useEffect(() => {
+  if (!layananOpen) return;
+  const onPointerDown = (e) => {
+    if (layananRef.current && !layananRef.current.contains(e.target)) setLayananOpen(false);
+  };
+  const onKey = (e) => { if (e.key === "Escape") setLayananOpen(false); };
+  document.addEventListener("pointerdown", onPointerDown);
+  document.addEventListener("keydown", onKey);
+  return () => {
+    document.removeEventListener("pointerdown", onPointerDown);
+    document.removeEventListener("keydown", onKey);
+  };
+}, [layananOpen]);
   useEffect(() => {
     const onKey = event => {
       if (event.key === "Escape") {
@@ -755,6 +778,38 @@ function LandingPage() {
               >
                 Berita
               </button>
+
+              <div className={`nav-dropdown ${layananOpen ? "open" : ""}`} ref={layananRef}>
+                <button
+                  type="button"
+                  className={`nav-link nav-dropdown-toggle ${layananOpen ? "active" : ""}`}
+                  onClick={() => setLayananOpen((v) => !v)}
+                  aria-expanded={layananOpen}
+                  aria-controls="menu-layanan-digital"
+                >
+                  Layanan Digital
+                  <ChevronDown className="nav-dropdown-chevron" aria-hidden="true" />
+                </button>
+                <ul id="menu-layanan-digital" className="nav-dropdown-menu">
+                  {LAYANAN_DIGITAL.map(({ id, label, desc, href, Icon }) => (
+                    <li key={id}>
+                      <a
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="nav-dropdown-item"
+                        onClick={() => setLayananOpen(false)}
+                      >
+                        <span className="nav-dropdown-icon"><Icon aria-hidden="true" /></span>
+                        <span className="nav-dropdown-text">
+                          <strong>{label}</strong>
+                          <small>{desc}</small>
+                        </span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </nav>
 
             <div className="desktop-contact-wrapper">
@@ -863,7 +918,7 @@ function LandingPage() {
 
               <div className="hero-buttons">
                 <button
-                  onClick={() => scrollToSection("prakata")}
+                  onClick={() => scrollToSection("visi-misi")}
                   className="btn-hero-outline"
                 >
                   Tentang Sekolah
