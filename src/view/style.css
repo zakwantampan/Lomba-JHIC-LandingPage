@@ -14,7 +14,7 @@
   --orange: #ff8900;
   --deep-orange: #ff6000;
   --yellow: #ffc400;
-  --muted: #5b5b60;
+  --muted: #48484d;
   --paper: #efefef;
 }
 
@@ -586,7 +586,7 @@ section {
 }
 
 .quote-main-text {
-  font-size: clamp(14px, 1.2vw, 15px);
+  font-size: clamp(15px, 1.4vw, 18px);
   font-weight: 750;
   line-height: 1.45;
 }
@@ -1003,7 +1003,7 @@ section {
 
 .keahlian-feature-text p {
   color: var(--muted);
-  font-size: clamp(16px, 1.7vw, 22px);
+  font-size: clamp(15px, 1.4vw, 18px);
   line-height: 1.4;
   text-align: left;
 }
@@ -1160,7 +1160,7 @@ section {
   display: flex;
   flex-direction: column;
   margin-top: 10px;
-  font-size: 30px;
+  font-size: clamp(28px, 4.1vw, 54px);
   font-weight: 800;
   line-height: 1;
   text-align: left;
@@ -3047,6 +3047,7 @@ body:has(dialog[open]) {
 /* TYPEWRITER CURSOR */
 .typewriter-text {
   display: inline;
+  font-size: clamp(15px, 1.4vw, 18px);
 }
 
 .typewriter-cursor {
