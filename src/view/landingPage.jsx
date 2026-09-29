@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import {
+  Trophy,
   ChevronRight,
   ChevronLeft,
   ChevronDown,
@@ -43,6 +44,7 @@ import posterAsri from "../../Assets websekolah New/Folder Poster Juara (Landing
 const achievementPosters = [posterSikep, posterVoli, posterKarate, posterPaskibra, posterGerak, posterOrasi, posterAsri];
 import iconTrophy from "../assets/trophy.png";
 import panggungPrestasiIcon from "../../Assets websekolah New/Icon Panggung_Prestasi.png";
+import tropiImg from "../assets/trophy.png"; // Sesuaikan folder/path-nya jika berbeda
 import bgHero from "../assets/hero-1800.jpg";
 import bgHeroMobile from "../assets/hero-960.jpg";
 import posterSikepFull from "../assets/prestasi-dkv-layangan-sikep.jpg";
@@ -534,6 +536,8 @@ const layananRef = useRef(null);
   const chatBody = useRef(null);
   const chatLauncher = useRef(null);
   const menuButton = useRef(null);
+  const [activeFacility, setActiveFacility] = useState(null);
+const facilityDialog = useRef(null);
 
   // Chatbot Assistant State
   const [isChatOpen, setIsChatOpen] = useState(false);
@@ -582,11 +586,17 @@ const layananRef = useRef(null);
     return () => { window.removeEventListener("keydown", onKey); window.removeEventListener("resize", onResize); };
   }, [mobileMenuOpen, isChatOpen]);
   useEffect(() => {
+  if (!mobileMenuOpen) setMobileLayananOpen(false);
+}, [mobileMenuOpen]);
+  useEffect(() => {
     if (chatBody.current) chatBody.current.scrollTop = chatBody.current.scrollHeight;
   }, [chatMessages, isChatOpen]);
   useEffect(() => {
     if (article) articleDialog.current?.showModal();
   }, [article]);
+  useEffect(() => {
+  if (activeFacility) facilityDialog.current?.showModal();
+}, [activeFacility]);
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -871,6 +881,46 @@ const layananRef = useRef(null);
               >
                 Berita
               </button>
+              <button
+  type="button"
+  className="mobile-nav-link mobile-nav-toggle"
+  onClick={() => setMobileLayananOpen((v) => !v)}
+  aria-expanded={mobileLayananOpen}
+  aria-controls="mobile-layanan-digital"
+>
+  Layanan Digital
+  <ChevronDown
+    className={`nav-dropdown-chevron ${mobileLayananOpen ? "rotated" : ""}`}
+    aria-hidden="true"
+  />
+</button>
+
+<div
+  id="mobile-layanan-digital"
+  className={`mobile-submenu ${mobileLayananOpen ? "open" : ""}`}
+>
+  <div className="mobile-submenu-inner">
+    {LAYANAN_DIGITAL.map(({ id, label, desc, href, Icon }) => (
+      <a
+        key={id}
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mobile-submenu-link"
+        onClick={() => {
+          setMobileMenuOpen(false);
+          setMobileLayananOpen(false);
+        }}
+      >
+        <span className="nav-dropdown-icon"><Icon aria-hidden="true" /></span>
+        <span className="nav-dropdown-text">
+          <strong>{label}</strong>
+          <small>{desc}</small>
+        </span>
+      </a>
+    ))}
+  </div>
+</div>
               <button
                 onClick={() => scrollToSection("kontak")}
                 className="mobile-btn-contact"
@@ -1178,7 +1228,7 @@ Dengan dukungan tenaga pendidik yang profesional, fasilitas berstandar industri,
             <div className="keahlian-hero-header">
               <img src={iconChar} alt="" className="icon-char" />
               <div className="keahlian-eyebrow">
-                <span>Keahlian & Masa Depan</span>
+                <span>Program Keahlian</span>
               </div>
               <h2 className="keahlian-hero-title">Keahlian & Masa Depan</h2>
             </div>
@@ -1331,9 +1381,15 @@ Dengan dukungan tenaga pendidik yang profesional, fasilitas berstandar industri,
             <div className="bulat-ach-3"></div>
             <div className="bulat-ach-4"></div>
           </div>
-          <div className="prestasi-header-bar reveal-up">
-              <img src={panggungPrestasiIcon} alt="Panggung Prestasi" className="prestasi-header-img" />
-            </div>
+<div className="prestasi-header-bar reveal-up">
+  <div className="prestasi-trophy-circle">
+    <img src={tropiImg} alt="Ikon Trofi" className="tropi-custom-img" />
+  </div>
+  <h2 className="prestasi-title-custom">
+    <span className="title-panggung">Panggung</span>
+    <span className="title-prestasi">Prestasi</span>
+  </h2>
+</div>
 
           <div
             className="section-container"
@@ -1666,57 +1722,56 @@ Dengan dukungan tenaga pendidik yang profesional, fasilitas berstandar industri,
               <div className="fasilitas-row">
                 <div className="fasilitas-track fasilitas-track-right">
                   {[...FACILITIES_DATA.slice(0, 4), ...FACILITIES_DATA.slice(0, 4)].map((facility, idx) => (
-                    <div
-                      key={`top-${facility.id}-${idx}`}
-                      className="facility-card"
-                    >
-                      <div>
-                        <div className="facility-img-box">
-                          <img
-                            loading="lazy"
-                      src={facility.image}
-                            alt={facility.title}
-                            className="facility-img"
-                          />
-                        </div>
-                        <div className="facility-card-body">
-                          <h3 className="facility-card-title">
-                            {facility.title}
-                          </h3>
-                          <p className="facility-card-desc">{facility.desc}</p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
+  <button
+    type="button"
+    key={`top-${facility.id}-${idx}`}
+    className="facility-card"
+    onClick={() => setActiveFacility(facility)}
+    aria-haspopup="dialog"
+    aria-label={`Lihat detail ${facility.title}`}
+  >
+    <div>
+      <div className="facility-img-box">
+        <img loading="lazy" src={facility.image} alt="" className="facility-img" />
+      </div>
+      <div className="facility-card-body">
+        <h3 className="facility-card-title">{facility.title}</h3>
+        <p className="facility-card-desc">{facility.desc}</p>
+      </div>
+    </div>
+  </button>
+))}
                 </div>
               </div>
 
               <div className="fasilitas-row">
                 <div className="fasilitas-track fasilitas-track-left">
-                  {[...FACILITIES_DATA.slice(4, 8), ...FACILITIES_DATA.slice(4, 8)].map((facility, idx) => (
-                    <div
-                      key={`bottom-${facility.id}-${idx}`}
-                      className="facility-card"
-                    >
-                      <div>
-                        <div className="facility-img-box">
-                          <img
-                            loading="lazy"
-                      src={facility.image}
-                            alt={facility.title}
-                            className="facility-img"
-                          />
-                        </div>
-                        <div className="facility-card-body">
-                          <h3 className="facility-card-title">
-                            {facility.title}
-                          </h3>
-                          <p className="facility-card-desc">{facility.desc}</p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+  {[...FACILITIES_DATA.slice(4, 8), ...FACILITIES_DATA.slice(4, 8)].map((facility, idx) => (
+    <button
+      type="button"
+      key={`bottom-${facility.id}-${idx}`}
+      className="facility-card"
+      onClick={() => setActiveFacility(facility)}
+      aria-haspopup="dialog"
+      aria-label={`Lihat detail ${facility.title}`}
+    >
+      <div>
+        <div className="facility-img-box">
+          <img
+            loading="lazy"
+            src={facility.image}
+            alt=""
+            className="facility-img"
+          />
+        </div>
+        <div className="facility-card-body">
+          <h3 className="facility-card-title">{facility.title}</h3>
+          <p className="facility-card-desc">{facility.desc}</p>
+        </div>
+      </div>
+    </button>
+  ))}
+</div>
               </div>
             </div>
           </div>
@@ -2026,6 +2081,38 @@ Dengan dukungan tenaga pendidik yang profesional, fasilitas berstandar industri,
             <p className="dialog-source">Ringkasan berita. Artikel lengkap belum tersedia pada proyek ini.</p>
           </>}
         </dialog>
+        <dialog
+  ref={facilityDialog}
+  className="facility-dialog"
+  aria-labelledby="facility-dialog-title"
+  onClose={() => setActiveFacility(null)}
+  onClick={(e) => {
+    if (e.target === facilityDialog.current) facilityDialog.current.close();
+  }}
+>
+  {activeFacility && (
+    <div className="facility-dialog-inner">
+      <button
+        type="button"
+        className="facility-dialog-close"
+        onClick={() => facilityDialog.current.close()}
+        aria-label="Tutup"
+      >
+        <X className="icon-sm" aria-hidden="true" />
+      </button>
+      <img
+        src={activeFacility.image}
+        alt={activeFacility.title}
+        className="facility-dialog-img"
+      />
+      <div className="facility-dialog-body">
+        <span className="facility-dialog-tag">Fasilitas SMKN 1 Bondowoso</span>
+        <h3 id="facility-dialog-title">{activeFacility.title}</h3>
+        <p>{activeFacility.desc}</p>
+      </div>
+    </div>
+  )}
+</dialog>
         {/* CHATBOT ASSISTANT */}
         <div className="chatbot-fixed-wrapper">
           {!isChatOpen ? (

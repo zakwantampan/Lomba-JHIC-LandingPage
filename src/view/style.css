@@ -826,7 +826,7 @@ section {
 
 .element-ahli {
   position: absolute;
-  top: -70px;
+  top: -200px;
   right: -80px;
   width: 280px;
   pointer-events: none;
@@ -1137,6 +1137,60 @@ section {
   height: auto;
 }
 
+.prestasi-header-bar {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.prestasi-trophy-circle {
+  background-color: #f39c12; /* Warna oranye terang */
+  width: 90px;
+  height: 90px;
+  border-radius: 200px; /* Membuat efek buletan sempurna */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3);
+}
+
+.prestasi-title-custom {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1;
+  text-align: left;
+}
+
+.title-panggung {
+  color: #ffffff; 
+}
+
+.title-prestasi {
+  color: #f39c12; 
+}
+
+/* Penyesuaian ukuran otomatis untuk layar HP */
+@media (max-width: 768px) {
+  .prestasi-trophy-circle {
+    width: 65px;
+    height: 65px;
+  }
+  
+  .prestasi-trophy-circle svg {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .prestasi-title-custom {
+    font-size: 2.2rem;
+  }
+}
+
 .achievement-card {
   max-width: 900px;
   margin-inline: auto;
@@ -1296,7 +1350,7 @@ section {
   position: absolute;
   width: 100px;
   height: 100px;
-  z-index: 11;
+  z-index: 1;
   pointer-events: none;
 }
 
@@ -1633,7 +1687,8 @@ section {
   will-change: transform;
 }
 
-.fasilitas-track:hover, .fasilitas-track:focus-within {
+.fasilitas-track:hover,
+.fasilitas-track:has(:focus-visible) {
   animation-play-state: paused;
 }
 
@@ -2368,6 +2423,113 @@ section {
   font-weight: 600;
 }
 
+/* FACILITY CARD + POPUP */
+.facility-card {
+  display: block;
+  padding: 0;
+  text-align: center;
+  color: inherit;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+
+.facility-card:hover {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+}
+
+.facility-img {
+  transition: transform 0.35s ease;
+}
+
+.facility-card:hover .facility-img {
+  transform: scale(1.06);
+}
+
+.facility-dialog {
+  margin: auto;
+  width: min(560px, calc(100% - 32px));
+  max-height: 88dvh;
+  overflow: auto;
+  border: 0;
+  border-radius: 24px;
+  padding: 0;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+
+.facility-dialog[open] {
+  animation: facility-pop 0.3s cubic-bezier(.22, 1, .36, 1) both;
+}
+
+@keyframes facility-pop {
+  0%   { opacity: 0; transform: translateY(16px) scale(.94); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.facility-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.facility-dialog-inner {
+  position: relative;
+}
+
+.facility-dialog-img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.facility-dialog-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  transition: background 0.15s;
+}
+
+.facility-dialog-close:hover {
+  background: var(--deep-orange);
+}
+
+.facility-dialog-body {
+  padding: 24px 26px 30px;
+}
+
+.facility-dialog-tag {
+  display: inline-block;
+  color: var(--deep-orange);
+  font-size: 12px;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.facility-dialog-body h3 {
+  margin: 8px 0 12px;
+  font-size: clamp(22px, 3vw, 28px);
+  line-height: 1.25;
+  font-weight: 800;
+}
+
+.facility-dialog-body p {
+  color: #555;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* kunci scroll halaman saat popup terbuka */
+body:has(dialog[open]) {
+  overflow: hidden;
+}
+
 /* ========================================================
    RESPONSIVE MEDIA QUERIES (Cascading from Desktop to Mobile)
    ======================================================== */
@@ -2530,6 +2692,23 @@ section {
     background: rgba(255, 255, 255, 0.08);
     color: var(--orange);
   }
+
+  .mobile-submenu-link .nav-dropdown-icon {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  border-radius: 10px;
+}
+.mobile-submenu-link .nav-dropdown-icon svg {
+  width: 18px;
+  height: 18px;
+}
+.mobile-submenu-link .nav-dropdown-text strong {
+  font-size: 14px;
+}
+.mobile-nav-toggle .nav-dropdown-chevron {
+  transition: transform .25s cubic-bezier(.22, 1, .36, 1);
+}
   
   .mobile-btn-contact {
     margin-top: 10px;
