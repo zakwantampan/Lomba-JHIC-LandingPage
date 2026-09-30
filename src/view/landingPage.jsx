@@ -1788,18 +1788,20 @@ Dengan dukungan tenaga pendidik yang profesional, fasilitas berstandar industri,
               </h2>
             </div>
 
-            <div className="partners-logo-grid">
-              {PARTNERS_DATA.map((partner, idx) => (
-                <div key={idx} className="partner-item">
-                  <img
-                    src={partner.logo}
-                    alt={partner.name}
-                    className="partner-logo"
-                    style={{ maxWidth: partner.width, width: "100%" }}
-                    loading="lazy"
-                  />
-                </div>
-              ))}
+            <div className="mitra-marquee-wrapper">
+              <div className="mitra-marquee-track">
+                {[...PARTNERS_DATA, ...PARTNERS_DATA].map((partner, idx) => (
+                  <div key={idx} className="partner-item">
+                    <img
+                      src={partner.logo}
+                      alt={partner.name}
+                      className="partner-logo"
+                      style={{ maxWidth: partner.width, width: "100%" }}
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
