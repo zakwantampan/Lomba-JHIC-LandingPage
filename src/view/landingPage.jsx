@@ -401,18 +401,24 @@ function LandingPage() {
 
   // Achievements Carousel Data
   const ACHIEVEMENTS_DATA = [
-    { id: 1, studentName: "ABIYYU ATHAULLAH DHIAULHAQ", studentClass: "Siswa Kelas XI - Desain Komunikasi Visual 1",
+    {
+      id: 1, studentName: "ABIYYU ATHAULLAH DHIAULHAQ", studentClass: "Siswa Kelas XI - Desain Komunikasi Visual 1",
       subtitle: 'Lomba Sketsa Rancangan Layangan "Sikep" tingkat nasional oleh Himadipsi ISI Surakarta',
       title: "Lomba Sketsa Rancangan Layangan Sikep Tingkat Nasional yang diselenggarakan oleh Himadipsi ISI SURAKARTA",
-      date: "23 Jul 2026", year: "2026", category: "Non-akademik", rank: "Meraih Juara 3", image: posterSikepFull },
-    { id: 2, studentName: "TIM VOLI SMAKENSA", studentClass: "SMKN 1 Bondowoso",
+      date: "23 Jul 2026", year: "2026", category: "Non-akademik", rank: "Meraih Juara 3", image: posterSikepFull
+    },
+    {
+      id: 2, studentName: "TIM VOLI SMAKENSA", studentClass: "SMKN 1 Bondowoso",
       subtitle: "Gebyar Olahraga Siswa SMK se-Kabupaten Bondowoso",
       title: "Voli Smakensa Meraih Juara 1 pada Gebyar Olahraga Siswa SMK se-Kabupaten Bondowoso",
-      year: "2026", category: "Olahraga", rank: "Meraih Juara 1", image: posterVoli },
-    { id: 3, studentName: "PRESTASI SMAKENSA", studentClass: "SMKN 1 Bondowoso",
+      year: "2026", category: "Olahraga", rank: "Meraih Juara 1", image: posterVoli
+    },
+    {
+      id: 3, studentName: "PRESTASI SMAKENSA", studentClass: "SMKN 1 Bondowoso",
       subtitle: "KEJURPROV FORKI Jawa Timur 2026 di Malang",
       title: "Juara 2 Karate KEJURPROV FORKI Jawa Timur 2026 di Malang",
-      year: "2026", category: "Olahraga", rank: "Meraih Juara 2", image: posterKarate },
+      year: "2026", category: "Olahraga", rank: "Meraih Juara 2", image: posterKarate
+    },
   ];
 
   // Facilities Data
@@ -503,18 +509,18 @@ function LandingPage() {
   ];
 
   const LAYANAN_DIGITAL = [
-  { id: "bkk",  label: "BKK",  desc: "Bursa Kerja Khusus",      href: "#", Icon: Briefcase },
-  { id: "spmb", label: "SPMB", desc: "Penerimaan Murid Baru",   href: "#", Icon: Users },
-  { id: "blud", label: "BLUD", desc: "Produk & Layanan Sekolah", href: "#", Icon: ShoppingBag },
-];
+    { id: "bkk", label: "BKK", desc: "Bursa Kerja Khusus", href: "#", Icon: Briefcase },
+    { id: "spmb", label: "SPMB", desc: "Penerimaan Murid Baru", href: "#", Icon: Users },
+    { id: "blud", label: "BLUD", desc: "Produk & Layanan Sekolah", href: "#", Icon: ShoppingBag },
+  ];
 
   // Navigation & UI state
   const [activeSection, setActiveSection] = useState("beranda");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [layananOpen, setLayananOpen] = useState(false);
-const [mobileLayananOpen, setMobileLayananOpen] = useState(false);
-const layananRef = useRef(null);
+  const [mobileLayananOpen, setMobileLayananOpen] = useState(false);
+  const layananRef = useRef(null);
 
   // Carousel State
   const [currentAchievement, setCurrentAchievement] = useState(0);
@@ -537,7 +543,7 @@ const layananRef = useRef(null);
   const chatLauncher = useRef(null);
   const menuButton = useRef(null);
   const [activeFacility, setActiveFacility] = useState(null);
-const facilityDialog = useRef(null);
+  const facilityDialog = useRef(null);
 
   // Chatbot Assistant State
   const [isChatOpen, setIsChatOpen] = useState(false);
@@ -561,18 +567,18 @@ const facilityDialog = useRef(null);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   useEffect(() => {
-  if (!layananOpen) return;
-  const onPointerDown = (e) => {
-    if (layananRef.current && !layananRef.current.contains(e.target)) setLayananOpen(false);
-  };
-  const onKey = (e) => { if (e.key === "Escape") setLayananOpen(false); };
-  document.addEventListener("pointerdown", onPointerDown);
-  document.addEventListener("keydown", onKey);
-  return () => {
-    document.removeEventListener("pointerdown", onPointerDown);
-    document.removeEventListener("keydown", onKey);
-  };
-}, [layananOpen]);
+    if (!layananOpen) return;
+    const onPointerDown = (e) => {
+      if (layananRef.current && !layananRef.current.contains(e.target)) setLayananOpen(false);
+    };
+    const onKey = (e) => { if (e.key === "Escape") setLayananOpen(false); };
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [layananOpen]);
   useEffect(() => {
     const onKey = event => {
       if (event.key === "Escape") {
@@ -586,8 +592,8 @@ const facilityDialog = useRef(null);
     return () => { window.removeEventListener("keydown", onKey); window.removeEventListener("resize", onResize); };
   }, [mobileMenuOpen, isChatOpen]);
   useEffect(() => {
-  if (!mobileMenuOpen) setMobileLayananOpen(false);
-}, [mobileMenuOpen]);
+    if (!mobileMenuOpen) setMobileLayananOpen(false);
+  }, [mobileMenuOpen]);
   useEffect(() => {
     if (chatBody.current) chatBody.current.scrollTop = chatBody.current.scrollHeight;
   }, [chatMessages, isChatOpen]);
@@ -595,8 +601,8 @@ const facilityDialog = useRef(null);
     if (article) articleDialog.current?.showModal();
   }, [article]);
   useEffect(() => {
-  if (activeFacility) facilityDialog.current?.showModal();
-}, [activeFacility]);
+    if (activeFacility) facilityDialog.current?.showModal();
+  }, [activeFacility]);
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -605,10 +611,10 @@ const facilityDialog = useRef(null);
         }
       });
     }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
-    
+
     const elements = document.querySelectorAll(".reveal-up");
     elements.forEach(el => observer.observe(el));
-    
+
     return () => {
       elements.forEach(el => observer.unobserve(el));
       observer.disconnect();
@@ -882,45 +888,45 @@ const facilityDialog = useRef(null);
                 Berita
               </button>
               <button
-  type="button"
-  className="mobile-nav-link mobile-nav-toggle"
-  onClick={() => setMobileLayananOpen((v) => !v)}
-  aria-expanded={mobileLayananOpen}
-  aria-controls="mobile-layanan-digital"
->
-  Layanan Digital
-  <ChevronDown
-    className={`nav-dropdown-chevron ${mobileLayananOpen ? "rotated" : ""}`}
-    aria-hidden="true"
-  />
-</button>
+                type="button"
+                className="mobile-nav-link mobile-nav-toggle"
+                onClick={() => setMobileLayananOpen((v) => !v)}
+                aria-expanded={mobileLayananOpen}
+                aria-controls="mobile-layanan-digital"
+              >
+                Layanan Digital
+                <ChevronDown
+                  className={`nav-dropdown-chevron ${mobileLayananOpen ? "rotated" : ""}`}
+                  aria-hidden="true"
+                />
+              </button>
 
-<div
-  id="mobile-layanan-digital"
-  className={`mobile-submenu ${mobileLayananOpen ? "open" : ""}`}
->
-  <div className="mobile-submenu-inner">
-    {LAYANAN_DIGITAL.map(({ id, label, desc, href, Icon }) => (
-      <a
-        key={id}
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mobile-submenu-link"
-        onClick={() => {
-          setMobileMenuOpen(false);
-          setMobileLayananOpen(false);
-        }}
-      >
-        <span className="nav-dropdown-icon"><Icon aria-hidden="true" /></span>
-        <span className="nav-dropdown-text">
-          <strong>{label}</strong>
-          <small>{desc}</small>
-        </span>
-      </a>
-    ))}
-  </div>
-</div>
+              <div
+                id="mobile-layanan-digital"
+                className={`mobile-submenu ${mobileLayananOpen ? "open" : ""}`}
+              >
+                <div className="mobile-submenu-inner">
+                  {LAYANAN_DIGITAL.map(({ id, label, desc, href, Icon }) => (
+                    <a
+                      key={id}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mobile-submenu-link"
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        setMobileLayananOpen(false);
+                      }}
+                    >
+                      <span className="nav-dropdown-icon"><Icon aria-hidden="true" /></span>
+                      <span className="nav-dropdown-text">
+                        <strong>{label}</strong>
+                        <small>{desc}</small>
+                      </span>
+                    </a>
+                  ))}
+                </div>
+              </div>
               <button
                 onClick={() => scrollToSection("kontak")}
                 className="mobile-btn-contact"
@@ -932,337 +938,337 @@ const facilityDialog = useRef(null);
         </header>
 
         <main>
-        {/* HERO SECTION */}
-        <section id="beranda" className="hero-section" tabIndex={-1}>
-          <div className="hero-bg-overlay">
-            <picture className="hero-picture">
-              <source media="(max-width: 600px)" srcSet={bgHeroMobile} />
-            <img
-              fetchPriority="high"
-              width="1800"
-              height="1180"
-              src={bgHero}
-              alt="SMKN 1 Bondowoso Student Ceremony"
-              className="hero-bg-image"
-            />
-            </picture>
-            <div className="hero-gradient-overlay"></div>
-          </div>
-
-          <div className="hero-content-wrapper">
-            <div className="hero-text-block">
-              <div className="hero-badge-box">
-                <span className="hero-badge">SMKN 1 Bondowoso</span>
-              </div>
-
-              <h1 className="hero-heading">
-                Dedikasi Terbaik untuk
-                <br className="hero-br" /> Masa{" "}
-                <span className="text-orange">Depan</span>
-              </h1>
-
-              <p className="hero-subtitle">
-                Di balik lulusan yang siap kerja dan berkarakter, ada tenaga
-                pendidik profesional dan berdedikasi SMKN 1 Bondowoso.
-              </p>
-
-              <div className="hero-buttons">
-                <button
-                  onClick={() => scrollToSection("visi-misi")}
-                  className="btn-hero-outline"
-                >
-                  Tentang Sekolah
-                </button>
-                <button
-                  onClick={() => scrollToSection("jurusan")}
-                  className="btn-hero-primary"
-                >
-                  Lihat Program Keahlian <ArrowRight className="icon-sm" />
-                </button>
-              </div>
+          {/* HERO SECTION */}
+          <section id="beranda" className="hero-section" tabIndex={-1}>
+            <div className="hero-bg-overlay">
+              <picture className="hero-picture">
+                <source media="(max-width: 600px)" srcSet={bgHeroMobile} />
+                <img
+                  fetchPriority="high"
+                  width="1800"
+                  height="1180"
+                  src={bgHero}
+                  alt="SMKN 1 Bondowoso Student Ceremony"
+                  className="hero-bg-image"
+                />
+              </picture>
+              <div className="hero-gradient-overlay"></div>
             </div>
-          </div>
 
-          <div className="hero-stats-wrapper">
-            <div className="hero-stats-card">
-              <div className="stat-item">
-                <p className="stat-number">
-                  <AnimatedCounter target={1850} suffix="" separator="." duration={2000} /><span className="stat-plus">+</span>
-                </p>
-                <p className="stat-label">Siswa aktif</p>
-              </div>
-              <div className="stat-item border-left">
-                <p className="stat-number">
-                  <AnimatedCounter target={124} suffix="" duration={2000} /><span className="stat-plus">+</span>
-                </p>
-                <p className="stat-label">Guru & Staf</p>
-              </div>
-              <div className="stat-item border-left">
-                <p className="stat-number"><AnimatedCounter target={8} duration={1500} /></p>
-                <p className="stat-label">Program Keahlian</p>
-              </div>
-              <div className="stat-item border-left">
-                <p className="stat-number">
-                  <AnimatedCounter target={85} duration={2000} /><span className="stat-plus">+</span>
-                </p>
-                <p className="stat-label">Mitra Industri</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* PRAKATA KEPALA SEKOLAH */}
-        <section id="prakata" className="prakata-section">
-          <div className="section-container">
-            <div className="prakata-grid">
-              <div className="prakata-content reveal-up">
-                <div className="prakata-header">
-                  <div>
-                    <h2 className="section-title">
-                      <span
-                        className="text-orange underline-highlight"
-                        id="apa"
-                      >
-                        <span className="prakata-heading-prefix">Prakata</span>{" "}Kepala Sekolah
-                        <span className="underline-bar"></span>
-                      </span>
-                    </h2>
-                  </div>
-                  <div className="quote-icon-box">
-                    <Quote className="icon-quote" />
-                  </div>
+            <div className="hero-content-wrapper">
+              <div className="hero-text-block">
+                <div className="hero-badge-box">
+                  <span className="hero-badge">SMKN 1 Bondowoso</span>
                 </div>
-                <div className="quote-card">
-                  <p className="quote-main-text">
-                    Pendidikan bukan hanya gedung megah, bukan hanya papan tulis dan bangku tapi kobar semangat, nyala kreativitas, dan detak jantung yang haus pengetahuan.
+
+                <h1 className="hero-heading">
+                  Dedikasi Terbaik untuk
+                  <br className="hero-br" /> Masa{" "}
+                  <span className="text-orange">Depan</span>
+                </h1>
+
+                <p className="hero-subtitle">
+                  Di balik lulusan yang siap kerja dan berkarakter, ada tenaga
+                  pendidik profesional dan berdedikasi SMKN 1 Bondowoso.
+                </p>
+
+                <div className="hero-buttons">
+                  <button
+                    onClick={() => scrollToSection("visi-misi")}
+                    className="btn-hero-outline"
+                  >
+                    Tentang Sekolah
+                  </button>
+                  <button
+                    onClick={() => scrollToSection("jurusan")}
+                    className="btn-hero-primary"
+                  >
+                    Lihat Program Keahlian <ArrowRight className="icon-sm" />
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="hero-stats-wrapper">
+              <div className="hero-stats-card">
+                <div className="stat-item">
+                  <p className="stat-number">
+                    <AnimatedCounter target={1850} suffix="" separator="." duration={2000} /><span className="stat-plus">+</span>
                   </p>
-                  <div className="divider-line"></div>
-                  <p className="quote-sub-text">
-                    <TypeWriter text="Selamat datang di SMK Negeri 1 Bondowoso. Kami berkomitmen untuk terus meningkatkan kualitas pendidikan vokasi yang relevan, adaptif, dan berorientasi pada kebutuhan dunia usaha dan industri. Mari bersama kita ciptakan ruang belajar yang merdeka agar setiap tunas kejeniusan dapat tumbuh dan berkembang secara optimal.
+                  <p className="stat-label">Siswa aktif</p>
+                </div>
+                <div className="stat-item border-left">
+                  <p className="stat-number">
+                    <AnimatedCounter target={124} suffix="" duration={2000} /><span className="stat-plus">+</span>
+                  </p>
+                  <p className="stat-label">Guru & Staf</p>
+                </div>
+                <div className="stat-item border-left">
+                  <p className="stat-number"><AnimatedCounter target={8} duration={1500} /></p>
+                  <p className="stat-label">Program Keahlian</p>
+                </div>
+                <div className="stat-item border-left">
+                  <p className="stat-number">
+                    <AnimatedCounter target={85} duration={2000} /><span className="stat-plus">+</span>
+                  </p>
+                  <p className="stat-label">Mitra Industri</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* PRAKATA KEPALA SEKOLAH */}
+          <section id="prakata" className="prakata-section">
+            <div className="section-container">
+              <div className="prakata-grid">
+                <div className="prakata-content reveal-up">
+                  <div className="prakata-header">
+                    <div>
+                      <h2 className="section-title">
+                        <span
+                          className="text-orange underline-highlight"
+                          id="apa"
+                        >
+                          <span className="prakata-heading-prefix">Prakata</span>{" "}Kepala Sekolah
+                          <span className="underline-bar"></span>
+                        </span>
+                      </h2>
+                    </div>
+                    <div className="quote-icon-box">
+                      <Quote className="icon-quote" />
+                    </div>
+                  </div>
+                  <div className="quote-card">
+                    <p className="quote-main-text">
+                      Pendidikan bukan hanya gedung megah, bukan hanya papan tulis dan bangku tapi kobar semangat, nyala kreativitas, dan detak jantung yang haus pengetahuan.
+                    </p>
+                    <div className="divider-line"></div>
+                    <p className="quote-sub-text">
+                      <TypeWriter text="Selamat datang di SMK Negeri 1 Bondowoso. Kami berkomitmen untuk terus meningkatkan kualitas pendidikan vokasi yang relevan, adaptif, dan berorientasi pada kebutuhan dunia usaha dan industri. Mari bersama kita ciptakan ruang belajar yang merdeka agar setiap tunas kejeniusan dapat tumbuh dan berkembang secara optimal.
 
 Dengan dukungan tenaga pendidik yang profesional, fasilitas berstandar industri, dan semangat kolaborasi bersama seluruh stakeholder SMKN 1 Bondowoso siap mencetak generasi penerus bangsa yang kompeten, berkarakter, dan berdaya saing global." speed={4} delay={300} />
-                  </p>
+                    </p>
+                  </div>
+
+                  <div className="principal-signature">
+                    <h4 className="principal-name">Asyik Sulaiman, S.Pd, M.Pd</h4>
+                    <p className="principal-title">
+                      Kepala Sekolah SMKN 1 Bondowoso
+                    </p>
+                  </div>
                 </div>
 
-                <div className="principal-signature">
-                  <h4 className="principal-name">Asyik Sulaiman, S.Pd, M.Pd</h4>
-                  <p className="principal-title">
-                    Kepala Sekolah SMKN 1 Bondowoso
-                  </p>
+                <div className="prakata-photo-col">
+                  <img
+                    loading="lazy"
+                    src={PakAsik}
+                    alt="Asyik Sulaiman, S.Pd, M.Pd - Kepala SMKN 1 Bondowoso"
+                    className="principal-photo"
+                  />
                 </div>
-              </div>
-
-              <div className="prakata-photo-col">
-                <img
-                  loading="lazy"
-                      src={PakAsik}
-                  alt="Asyik Sulaiman, S.Pd, M.Pd - Kepala SMKN 1 Bondowoso"
-                  className="principal-photo"
-                />
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        {/* VISI DAN MISI SECTION */}
-        <section id="visi-misi" className="visi-misi-section">
-          <div className="blob-yellow-1"></div>
-          {/* <div className="blob-yellow-2"></div> */}
-          <div className="semua-bulat-visi">
-            <div className="bulat1"></div>
-            <div className="bulat2"></div>
-          </div>
-
-          <div className="semua-bulat-visi-2">
-            <div className="bulat3"></div>
-            <div className="bulat4"></div>
-          </div>
-
-          <div className="section-container">
-            <div className="visi-misi-header">
-              <span className="sub-header-orange">
-                Tentang SMKN 1 Bondowoso
-              </span>
-              <h2 className="section-title">
-                Visi dan <span className="text-orange">Misi</span>
-              </h2>
+          {/* VISI DAN MISI SECTION */}
+          <section id="visi-misi" className="visi-misi-section">
+            <div className="blob-yellow-1"></div>
+            {/* <div className="blob-yellow-2"></div> */}
+            <div className="semua-bulat-visi">
+              <div className="bulat1"></div>
+              <div className="bulat2"></div>
             </div>
 
-            <div className="visi-misi-grid">
-              <div className="visi-card">
-                <div>
-                  <h3 className="card-title-lg">Visi</h3>
-                  <p className="card-text">
-                    Terwujudnya SMK Negeri 1 Bondowoso sebagai pusat pendidikan
-                    vokasi yang Menyala Mendunia; unggul dalam prestasi dan
-                    inovasi, serta menghasilkan lulusan yang kompetitif di
-                    tingkat nasional maupun internasional.
-                  </p>
-                </div>
-                <img src={logoOtak} className="icon-otak reveal-up" alt="" />
+            <div className="semua-bulat-visi-2">
+              <div className="bulat3"></div>
+              <div className="bulat4"></div>
+            </div>
+
+            <div className="section-container">
+              <div className="visi-misi-header">
+                <span className="sub-header-orange">
+                  Tentang SMKN 1 Bondowoso
+                </span>
+                <h2 className="section-title">
+                  Visi dan <span className="text-orange">Misi</span>
+                </h2>
               </div>
 
-              <div className="misi-card">
-                <div className="misi-header-row">
-                  <h3 className="card-title-lg">Misi</h3>
-                  <span className="misi-star-badge">★</span>
+              <div className="visi-misi-grid">
+                <div className="visi-card">
+                  <div>
+                    <h3 className="card-title-lg">Visi</h3>
+                    <p className="card-text">
+                      Terwujudnya SMK Negeri 1 Bondowoso sebagai pusat pendidikan
+                      vokasi yang Menyala Mendunia; unggul dalam prestasi dan
+                      inovasi, serta menghasilkan lulusan yang kompetitif di
+                      tingkat nasional maupun internasional.
+                    </p>
+                  </div>
+                  <img src={logoOtak} className="icon-otak reveal-up" alt="" />
                 </div>
-                <ul className="misi-list">
-                  <li className="misi-item">
-                    <span className="bullet-yellow"></span>
+
+                <div className="misi-card">
+                  <div className="misi-header-row">
+                    <h3 className="card-title-lg">Misi</h3>
+                    <span className="misi-star-badge">★</span>
+                  </div>
+                  <ul className="misi-list">
+                    <li className="misi-item">
+                      <span className="bullet-yellow"></span>
+                      <span>
+                        Meningkatkan Keimanan dan Ketaqwaan kepada Tuhan YME
+                        sebagai fondasi karakter murid.
+                      </span>
+                    </li>
+                    <li className="misi-item">
+                      <span className="bullet-yellow"></span>
+                      <span>
+                        Membangun Semangat Berprestasi dan Berinovasi (Menyala)
+                        melalui pembelajaran berbasis proyek (PBL) yang inovatif.
+                      </span>
+                    </li>
+                    <li className="misi-item">
+                      <span className="bullet-yellow"></span>
+                      <span>
+                        Mencetak Lulusan Siap Kerja yang berdaya saing global dan
+                        selaras (link & match) dengan standar DUDI.
+                      </span>
+                    </li>
+                    <li className="misi-item">
+                      <span className="bullet-yellow"></span>
+                      <span>
+                        Menumbuhkan Jiwa Kewirausahaan guna melahirkan
+                        wirausahawan muda yang tangguh dan adaptif.
+                      </span>
+                    </li>
+                    <li className="misi-item">
+                      <span className="bullet-yellow"></span>
+                      <span>
+                        Mempersiapkan Murid Melanjutkan Studi melalui penguatan
+                        literasi, numerasi, dan teknologi terapan.
+                      </span>
+                    </li>
+                    <li className="misi-item">
+                      <span className="bullet-yellow"></span>
+                      <span>
+                        Memperluas Kemitraan Strategis (Mendunia) dengan institusi
+                        pendidikan, lembaga sertifikasi, dan industri
+                        multinasional.
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="tujuan-card reveal-up">
+                <div className="tujuan-header">
+                  <h3 className="card-title-lg">Tujuan</h3>
+                  <div className="target-icon-circle">
+                    <img src={logoTujuan} className="icon-target" alt="" />
+                  </div>
+                </div>
+                <ul className="tujuan-grid">
+                  <li className="tujuan-item">
+                    <span className="bullet-yellow-sm"></span>
                     <span>
-                      Meningkatkan Keimanan dan Ketaqwaan kepada Tuhan YME
-                      sebagai fondasi karakter murid.
+                      <strong>Karakter Mulia:</strong> Mewujudkan lulusan yang
+                      beriman, disiplin, berintegritas, dan berbudaya kerja
+                      industri.
                     </span>
                   </li>
-                  <li className="misi-item">
-                    <span className="bullet-yellow"></span>
+                  <li className="tujuan-item">
+                    <span className="bullet-yellow-sm"></span>
                     <span>
-                      Membangun Semangat Berprestasi dan Berinovasi (Menyala)
-                      melalui pembelajaran berbasis proyek (PBL) yang inovatif.
+                      <strong>Prestasi & Inovasi:</strong> Menghasilkan minimal 15
+                      prestasi tingkat nasional dan 2 rekognisi internasional per
+                      tahun.
                     </span>
                   </li>
-                  <li className="misi-item">
-                    <span className="bullet-yellow"></span>
+                  <li className="tujuan-item">
+                    <span className="bullet-yellow-sm"></span>
                     <span>
-                      Mencetak Lulusan Siap Kerja yang berdaya saing global dan
-                      selaras (link & match) dengan standar DUDI.
+                      <strong>Kesiapan Bekerja:</strong> Menyelaraskan 100%
+                      kurikulum dengan DUDI dan menyerap minimal 55% lulusan di
+                      dunia kerja.
                     </span>
                   </li>
-                  <li className="misi-item">
-                    <span className="bullet-yellow"></span>
+                  <li className="tujuan-item">
+                    <span className="bullet-yellow-sm"></span>
                     <span>
-                      Menumbuhkan Jiwa Kewirausahaan guna melahirkan
-                      wirausahawan muda yang tangguh dan adaptif.
+                      <strong>Jiwa Wirausaha:</strong> Melahirkan minimal 20%
+                      lulusan sebagai technopreneur muda mandiri melalui Teaching
+                      Factory.
                     </span>
                   </li>
-                  <li className="misi-item">
-                    <span className="bullet-yellow"></span>
+                  <li className="tujuan-item">
+                    <span className="bullet-yellow-sm"></span>
                     <span>
-                      Mempersiapkan Murid Melanjutkan Studi melalui penguatan
-                      literasi, numerasi, dan teknologi terapan.
+                      <strong>Studi Lanjut:</strong> Mengantarkan minimal 25%
+                      lulusan melanjutkan ke Perguruan Tinggi Negeri atau Vokasi.
                     </span>
                   </li>
-                  <li className="misi-item">
-                    <span className="bullet-yellow"></span>
+                  <li className="tujuan-item">
+                    <span className="bullet-yellow-sm"></span>
                     <span>
-                      Memperluas Kemitraan Strategis (Mendunia) dengan institusi
-                      pendidikan, lembaga sertifikasi, dan industri
-                      multinasional.
+                      <strong>Kemitraan Global:</strong> Membangun kerja sama
+                      aktif dengan minimal 10 DUDI multinasional dan instansi luar
+                      negeri.
                     </span>
                   </li>
                 </ul>
               </div>
             </div>
+          </section>
 
-            <div className="tujuan-card reveal-up">
-              <div className="tujuan-header">
-                <h3 className="card-title-lg">Tujuan</h3>
-                <div className="target-icon-circle">
-                  <img src={logoTujuan} className="icon-target" alt="" />
+          {/* JURUSAN SECTION */}
+          <section id="jurusan" className="keahlian-section">
+            <img src={elementKeahlian} alt="" className="element-ahli" />
+
+            <div className="keahlian-top-strip">
+              <div className="keahlian-dot keahlian-dot-1"></div>
+              <div className="keahlian-dot keahlian-dot-2"></div>
+            </div>
+
+            <div className="keahlian-wrap reveal-up">
+              <div className="keahlian-hero-header">
+                <img src={iconChar} alt="" className="icon-char" />
+                <div className="keahlian-eyebrow">
+                  <span>Program Keahlian</span>
                 </div>
+                <h2 className="keahlian-hero-title">Keahlian & Masa Depan</h2>
               </div>
-              <ul className="tujuan-grid">
-                <li className="tujuan-item">
-                  <span className="bullet-yellow-sm"></span>
-                  <span>
-                    <strong>Karakter Mulia:</strong> Mewujudkan lulusan yang
-                    beriman, disiplin, berintegritas, dan berbudaya kerja
-                    industri.
-                  </span>
-                </li>
-                <li className="tujuan-item">
-                  <span className="bullet-yellow-sm"></span>
-                  <span>
-                    <strong>Prestasi & Inovasi:</strong> Menghasilkan minimal 15
-                    prestasi tingkat nasional dan 2 rekognisi internasional per
-                    tahun.
-                  </span>
-                </li>
-                <li className="tujuan-item">
-                  <span className="bullet-yellow-sm"></span>
-                  <span>
-                    <strong>Kesiapan Bekerja:</strong> Menyelaraskan 100%
-                    kurikulum dengan DUDI dan menyerap minimal 55% lulusan di
-                    dunia kerja.
-                  </span>
-                </li>
-                <li className="tujuan-item">
-                  <span className="bullet-yellow-sm"></span>
-                  <span>
-                    <strong>Jiwa Wirausaha:</strong> Melahirkan minimal 20%
-                    lulusan sebagai technopreneur muda mandiri melalui Teaching
-                    Factory.
-                  </span>
-                </li>
-                <li className="tujuan-item">
-                  <span className="bullet-yellow-sm"></span>
-                  <span>
-                    <strong>Studi Lanjut:</strong> Mengantarkan minimal 25%
-                    lulusan melanjutkan ke Perguruan Tinggi Negeri atau Vokasi.
-                  </span>
-                </li>
-                <li className="tujuan-item">
-                  <span className="bullet-yellow-sm"></span>
-                  <span>
-                    <strong>Kemitraan Global:</strong> Membangun kerja sama
-                    aktif dengan minimal 10 DUDI multinasional dan instansi luar
-                    negeri.
-                  </span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </section>
 
-        {/* JURUSAN SECTION */}
-        <section id="jurusan" className="keahlian-section">
-          <img src={elementKeahlian} alt="" className="element-ahli" />
-
-          <div className="keahlian-top-strip">
-            <div className="keahlian-dot keahlian-dot-1"></div>
-            <div className="keahlian-dot keahlian-dot-2"></div>
-          </div>
-
-          <div className="keahlian-wrap reveal-up">
-            <div className="keahlian-hero-header">
-              <img src={iconChar} alt="" className="icon-char" />
-              <div className="keahlian-eyebrow">
-                <span>Program Keahlian</span>
-              </div>
-              <h2 className="keahlian-hero-title">Keahlian & Masa Depan</h2>
-            </div>
-
-            <div
-              className="keahlian-layout-grid"
-              style={{
-                "--kh-accent": activeVisual.accent,
-                "--kh-accent-light": activeVisual.accentLight,
-              }}
-            >
-              <div className="keahlian-feature-photo">
-                <div className="keahlian-feature-clip">
-                  {prevMajorData && (
-                    <div className="keahlian-scene keahlian-scene-out" key={`prev-${prevMajorData.id}`}>
-                      <MajorFeatureScene id={prevMajorData.id} />
+              <div
+                className="keahlian-layout-grid"
+                style={{
+                  "--kh-accent": activeVisual.accent,
+                  "--kh-accent-light": activeVisual.accentLight,
+                }}
+              >
+                <div className="keahlian-feature-photo">
+                  <div className="keahlian-feature-clip">
+                    {prevMajorData && (
+                      <div className="keahlian-scene keahlian-scene-out" key={`prev-${prevMajorData.id}`}>
+                        <MajorFeatureScene id={prevMajorData.id} />
+                      </div>
+                    )}
+                    <div className="keahlian-scene keahlian-scene-in" key={activeMajorData.id}>
+                      <MajorFeatureScene id={activeMajorData.id} />
+                      <div className="keahlian-feature-caption">
+                        {activeVisual.caption.map((line) => (
+                          <span key={line} className="keahlian-caption-line">
+                            {line}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                  )}
-                  <div className="keahlian-scene keahlian-scene-in" key={activeMajorData.id}>
-                    <MajorFeatureScene id={activeMajorData.id} />
-                    <div className="keahlian-feature-caption">
-                      {activeVisual.caption.map((line) => (
-                        <span key={line} className="keahlian-caption-line">
-                          {line}
-                        </span>
-                      ))}
+
+                    <div className="keahlian-emblem">
+                      <img src={logoSmakensa} alt="Logo SMAKENSA" />
                     </div>
-                  </div>
 
-                  <div className="keahlian-emblem">
-                    <img src={logoSmakensa} alt="Logo SMAKENSA" />
-                  </div>
-
-                  {/* <div className="keahlian-pager">
+                    {/* <div className="keahlian-pager">
                     {MAJORS_DATA.map((major, idx) => (
                       <button
                         key={major.id}
@@ -1273,613 +1279,612 @@ Dengan dukungan tenaga pendidik yang profesional, fasilitas berstandar industri,
                       />
                     ))}
                   </div> */}
-                </div>
+                  </div>
 
-                <button
-                  type="button"
-                  className="keahlian-arrow-btn"
-                  onClick={handleNextMajor}
-                  aria-label="Lihat jurusan berikutnya"
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+                  <button
+                    type="button"
+                    className="keahlian-arrow-btn"
+                    onClick={handleNextMajor}
+                    aria-label="Lihat jurusan berikutnya"
                   >
-                    <path
-                      d="M9 6l6 6-6 6"
-                      stroke="#fff"
-                      strokeWidth="2.6"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </button>
-              </div>
-
-              <div className="keahlian-feature-text keahlian-scene-pop" key={activeMajorData.id}>
-                <h2>
-                  <span className="keahlian-black">APA ITU</span>{" "}
-                  <span className="keahlian-purple">
-                    {activeMajorData.title.replace(/^APA ITU\s+/, "")}
-                  </span>
-                </h2>
-                <p>{activeMajorData.description}</p>
-                <div className="keahlian-divider"></div>
-              </div>
-
-              <div className="keahlian-program-cards">
-                {nextMajorIndexes.map((idx, pos) => {
-                  const major = MAJORS_DATA[idx];
-                  const visual = MAJOR_VISUALS[major.id];
-                  return (
-                    <button
-                      key={major.id}
-                      type="button"
-                      className="keahlian-card"
-                      style={{
-                        background: visual.cardBg,
-                        animationDelay: `${pos * 70}ms`,
-                        "--kh-card-line": visual.accentLight,
-                      }}
-                      onClick={() => setActiveMajor(idx)}
-                      aria-label={`Lihat jurusan ${major.name}`}
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
-                      <MajorCardScene id={major.id} />
-                      <div
-                        className="keahlian-badge"
-                        style={{ background: visual.accent }}
+                      <path
+                        d="M9 6l6 6-6 6"
+                        stroke="#fff"
+                        strokeWidth="2.6"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </button>
+                </div>
+
+                <div className="keahlian-feature-text keahlian-scene-pop" key={activeMajorData.id}>
+                  <h2>
+                    <span className="keahlian-black">APA ITU</span>{" "}
+                    <span className="keahlian-purple">
+                      {activeMajorData.title.replace(/^APA ITU\s+/, "")}
+                    </span>
+                  </h2>
+                  <p>{activeMajorData.description}</p>
+                  <div className="keahlian-divider"></div>
+                </div>
+
+                <div className="keahlian-program-cards">
+                  {nextMajorIndexes.map((idx, pos) => {
+                    const major = MAJORS_DATA[idx];
+                    const visual = MAJOR_VISUALS[major.id];
+                    return (
+                      <button
+                        key={major.id}
+                        type="button"
+                        className="keahlian-card"
+                        style={{
+                          background: visual.cardBg,
+                          animationDelay: `${pos * 70}ms`,
+                          "--kh-card-line": visual.accentLight,
+                        }}
+                        onClick={() => setActiveMajor(idx)}
+                        aria-label={`Lihat jurusan ${major.name}`}
                       >
-                        {major.code}
-                      </div>
-                      <div className="keahlian-card-title">
-                        {visual.cardLines.map((line, i) => (
-                          <React.Fragment key={line}>
-                            {i > 0 && <br />}
-                            {line}
-                          </React.Fragment>
-                        ))}
-                      </div>
-                    </button>
-                  );
-                })}
+                        <MajorCardScene id={major.id} />
+                        <div
+                          className="keahlian-badge"
+                          style={{ background: visual.accent }}
+                        >
+                          {major.code}
+                        </div>
+                        <div className="keahlian-card-title">
+                          {visual.cardLines.map((line, i) => (
+                            <React.Fragment key={line}>
+                              {i > 0 && <br />}
+                              {line}
+                            </React.Fragment>
+                          ))}
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        {/* PRESTASI SECTION */}
-        <section id="prestasi" className="prestasi-section">
-          <div className="prestasi-bg-marquee" aria-hidden="true">
-            {Array.from({ length: 6 }).map((_, colIndex) => (
-              <div
-                key={`bgcol-${colIndex}`}
-                className={`prestasi-bg-col ${
-                  colIndex % 2 === 0
-                    ? "prestasi-bg-col-up"
-                    : "prestasi-bg-col-down"
-                }`}
-              >
-                {Array.from({ length: 14 }).map((_, imgIndex) => (
-                  <img
-                    key={`bgcol-${colIndex}-img-${imgIndex}`}
-                    src={achievementPosters[(colIndex + imgIndex) % achievementPosters.length]}
-                    alt=""
-                    className="prestasi-bg-poster"
-                    loading="lazy"
-                  />
-                ))}
-              </div>
-            ))}
-          </div>
-
-          <div className="bulat-semua-ach-1">
-            <div className="bulat-ach-1"></div>
-            <div className="bulat-ach-2"></div>
-          </div>
-          <div className="bulat-semua-ach-2">
-            <div className="bulat-ach-3"></div>
-            <div className="bulat-ach-4"></div>
-          </div>
-<div className="prestasi-header-bar reveal-up">
-  <div className="prestasi-trophy-circle">
-    <img src={tropiImg} alt="Ikon Trofi" className="tropi-custom-img" />
-  </div>
-  <h2 className="prestasi-title-custom">
-    <span className="title-panggung">Panggung</span>
-    <span className="title-prestasi">Prestasi</span>
-  </h2>
-</div>
-
-          <div
-            className="section-container"
-            style={{ position: "relative", zIndex: 10 }}
-          >
-
-            <div className="achievement-card" aria-roledescription="karusel" aria-label="Prestasi siswa">
-              <div className="achievement-grid achievement-fade-in" key={currentAchievement}>
-                <div className="achievement-img-col">
-                  <img
-                    src={activeAch.image}
-                    alt={activeAch.title}
-                    className="achievement-poster"
-                  />
-                  <div className="achievement-poster-overlay">
-                    <p className="achievement-rank-text">{activeAch.rank}</p>
-                    <p className="achievement-class-text">
-                      {activeAch.studentClass}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="achievement-text-col" aria-live="polite" aria-atomic="true">
-                  <div className="student-tag">
-                    <img src={usurCircle} alt="" className="icon-user" />{" "}
-                    {activeAch.studentName}
-                  </div>
-
-                  <div className="subtitle-row">
+          {/* PRESTASI SECTION */}
+          <section id="prestasi" className="prestasi-section">
+            <div className="prestasi-bg-marquee" aria-hidden="true">
+              {Array.from({ length: 6 }).map((_, colIndex) => (
+                <div
+                  key={`bgcol-${colIndex}`}
+                  className={`prestasi-bg-col ${colIndex % 2 === 0
+                      ? "prestasi-bg-col-up"
+                      : "prestasi-bg-col-down"
+                    }`}
+                >
+                  {Array.from({ length: 14 }).map((_, imgIndex) => (
                     <img
-                      src={iconAward}
+                      key={`bgcol-${colIndex}-img-${imgIndex}`}
+                      src={achievementPosters[(colIndex + imgIndex) % achievementPosters.length]}
                       alt=""
-                      className="icon-sm"
-                      id="icon-tropi"
-                    />
-                    <span>{activeAch.subtitle}</span>
-                  </div>
-
-                  <h3 className="achievement-title-text">{activeAch.title}</h3>
-
-                  <div className="achievement-meta-row">
-                    <div className="meta-date">
-                      <Calendar className="icon-sm" />
-                      <span>{activeAch.date || activeAch.year}</span>
-                    </div>
-                    <span className="badge-year">{activeAch.year}</span>
-                    <span className="badge-category">{activeAch.category}</span>
-                  </div>
-
-                  <img
-                    src={iconSparkles}
-                    alt=""
-                    className="achievement-sparkle"
-                  />
-                </div>
-              </div>
-
-              <div className="slider-controls">
-                <button onClick={handlePrevAchievement} className="slider-btn" aria-label="Prestasi sebelumnya">
-                  <ChevronLeft className="icon-sm" />
-                </button>
-                <button onClick={handleNextAchievement} className="slider-btn" aria-label="Prestasi berikutnya">
-                  <ChevronRight className="icon-sm" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* BERITA SECTION */}
-        <section id="berita" className="berita-section">
-          <div className="berita-decor-circle" aria-hidden="true"></div>
-          <div
-            className="section-container"
-            style={{ position: "relative", zIndex: 1 }}
-          >
-            <div className="berita-top-bar">
-              <div>
-                <h2 className="section-title" id="kabar">
-                  Kabar & <br /> Berita{" "}
-                  <span className="text-orange">Vokasi</span>
-                </h2>
-              </div>
-              <button
-                onClick={() => scrollToSection("semua-berita")}
-                className="btn-all-news"
-              >
-                Lihat Semua Berita <ArrowRight className="icon-sm" />
-              </button>
-            </div>
-
-            <div className="berita-layout-grid" onClick={openNews}>
-              <div className="news-main-col">
-                <div className="featured-news-card">
-                  <div className="featured-img-box">
-                    <img
+                      className="prestasi-bg-poster"
                       loading="lazy"
-                      src={newsPhotos.mgmp}
-                      alt="Peace Corps USA Event"
-                      className="featured-img"
                     />
-                    <span className="category-tag-badge">Kegiatan Sekolah</span>
+                  ))}
+                </div>
+              ))}
+            </div>
+
+            <div className="bulat-semua-ach-1">
+              <div className="bulat-ach-1"></div>
+              <div className="bulat-ach-2"></div>
+            </div>
+            <div className="bulat-semua-ach-2">
+              <div className="bulat-ach-3"></div>
+              <div className="bulat-ach-4"></div>
+            </div>
+            <div className="prestasi-header-bar reveal-up">
+              <div className="prestasi-trophy-circle">
+                <img src={tropiImg} alt="Ikon Trofi" className="tropi-custom-img" />
+              </div>
+              <h2 className="prestasi-title-custom">
+                <span className="title-panggung">Panggung</span>
+                <span className="title-prestasi">Prestasi</span>
+              </h2>
+            </div>
+
+            <div
+              className="section-container"
+              style={{ position: "relative", zIndex: 10 }}
+            >
+
+              <div className="achievement-card" aria-roledescription="karusel" aria-label="Prestasi siswa">
+                <div className="achievement-grid achievement-fade-in" key={currentAchievement}>
+                  <div className="achievement-img-col">
+                    <img
+                      src={activeAch.image}
+                      alt={activeAch.title}
+                      className="achievement-poster"
+                    />
+                    <div className="achievement-poster-overlay">
+                      <p className="achievement-rank-text">{activeAch.rank}</p>
+                      <p className="achievement-class-text">
+                        {activeAch.studentClass}
+                      </p>
+                    </div>
                   </div>
-                  <div className="featured-news-body">
-                    <div className="meta-stats-row">
-                      <span className="meta-stat-item">
-                        <Calendar className="icon-orange-sm" /> 23 Jul 2026
-                      </span>
-                      <span>•</span>
-                      <span className="meta-stat-item">
-                        <Eye className="icon-orange-sm" /> 192 Views
-                      </span>
+
+                  <div className="achievement-text-col" aria-live="polite" aria-atomic="true">
+                    <div className="student-tag">
+                      <img src={usurCircle} alt="" className="icon-user" />{" "}
+                      {activeAch.studentName}
                     </div>
-                    <h3 className="featured-news-title">
-                      Semangat Berkolaborasi, MGMP Bahasa Inggris SMK Kabupaten
-                      Bondowoso Hadirkan Relawan Peace Corps asal USA
-                    </h3>
-                    <p className="featured-news-excerpt">
-                      Pertemuan MGMP Bahasa Inggris SMK Kabupaten Bondowoso
-                      menjadi wadah penguatan kompetensi guru melalui diseminasi
-                      materi Deep Learning oleh Lina Kurniawati, S.Pd. serta
-                      sesi pertukaran budaya (Cultural Exchange)...
-                    </p>
-                    <div className="featured-news-footer">
-                      <span className="author-text">
-                        Penulis:{" "}
-                        <strong style={{ color: "#1e293b" }}>SuperAdmin</strong>
-                      </span>
-                      <button className="btn-read-more">
-                        Baca selengkapnya <ArrowRight className="icon-sm" />
-                      </button>
+
+                    <div className="subtitle-row">
+                      <img
+                        src={iconAward}
+                        alt=""
+                        className="icon-sm"
+                        id="icon-tropi"
+                      />
+                      <span>{activeAch.subtitle}</span>
                     </div>
+
+                    <h3 className="achievement-title-text">{activeAch.title}</h3>
+
+                    <div className="achievement-meta-row">
+                      <div className="meta-date">
+                        <Calendar className="icon-sm" />
+                        <span>{activeAch.date || activeAch.year}</span>
+                      </div>
+                      <span className="badge-year">{activeAch.year}</span>
+                      <span className="badge-category">{activeAch.category}</span>
+                    </div>
+
+                    <img
+                      src={iconSparkles}
+                      alt=""
+                      className="achievement-sparkle"
+                    />
                   </div>
                 </div>
 
-                <div className="sub-news-grid" id="semua-berita">
-                  <div className="sub-news-card">
-                    <div className="sub-news-img-box">
-                      <img
-                        loading="lazy"
-                      src={newsPhotos.bk}
-                        alt="Sistem BK Terintegrasi"
-                        className="sub-news-img"
-                      />
-                      <span className="sub-news-tag">Kegiatan Sekolah</span>
-                    </div>
-                    <div className="sub-news-date">
-                      <span>01 Aug 2026</span> • <span>192 Views</span>
-                    </div>
-                    <h4 className="sub-news-title">
-                      Atasi Antrean Keterlambatan, SMKN 1 Bondowoso Luncurkan
-                      Sistem BK Terintegrasi
-                    </h4>
-                    <p className="sub-news-excerpt">SMKN 1 Bondowoso meluncurkan Sistem Terintegrasi Bimbingan Konseling berbasis Face Recognition untuk mempercepat presensi siswa.</p>
-                    <div className="sub-news-footer">
-                      <span style={{ fontSize: "10px", color: "#64748b" }}>
-                        SuperAdmin
-                      </span>
-                      <button className="btn-read-sm">
-                        Baca <ArrowRight className="icon-sm" />
-                      </button>
-                    </div>
-                  </div>
-
-                  <div className="sub-news-card">
-                    <div className="sub-news-img-box">
-                      <img
-                        loading="lazy"
-                      src={newsPhotos.asri}
-                        alt="Juara Kebersihan Sekolah"
-                        className="sub-news-img"
-                      />
-                      <span className="sub-news-tag">Prestasi</span>
-                    </div>
-                    <div className="sub-news-date">
-                      <span>23 Jul 2026</span> • <span>192 Views</span>
-                    </div>
-                    <h4 className="sub-news-title">
-                      SMK Negeri 1 Bondowoso Meraih Juara 1 Lomba Kebersihan
-                      Lingkungan Sekolah
-                    </h4>
-                    <p className="sub-news-excerpt">SMKN 1 Bondowoso sukses meraih Juara 1 Lomba Kebersihan Lingkungan Sekolah dalam program ASRI.</p>
-                    <div className="sub-news-footer">
-                      <span style={{ fontSize: "10px", color: "#64748b" }}>
-                        WriterSmakensa
-                      </span>
-                      <button className="btn-read-sm">
-                        Baca <ArrowRight className="icon-sm" />
-                      </button>
-                    </div>
-                  </div>
-
-                  <div className="sub-news-card">
-                    <div className="sub-news-img-box">
-                      <img
-                        loading="lazy"
-                      src={newsPhotos.osis}
-                        alt="Debat OSIS"
-                        className="sub-news-img"
-                      />
-                      <span className="sub-news-tag">Kegiatan Sekolah</span>
-                    </div>
-                    <div className="sub-news-date">
-                      <span>23 Jul 2026</span> • <span>192 Views</span>
-                    </div>
-                    <h4 className="sub-news-title">
-                      Debat Calon Ketua Wakil Ketua OSIS SMKN 1 Bondowoso
-                      Periode 2025/2026
-                    </h4>
-                    <p className="sub-news-excerpt">SMKN 1 Bondowoso melaksanakan kegiatan Debat Calon Ketua dan Wakil Ketua OSIS Periode 2025/2026.</p>
-                    <div className="sub-news-footer">
-                      <span style={{ fontSize: "10px", color: "#64748b" }}>
-                        SuperAdmin
-                      </span>
-                      <button className="btn-read-sm">
-                        Baca <ArrowRight className="icon-sm" />
-                      </button>
-                    </div>
-                  </div>
-
-                  <div className="sub-news-card">
-                    <div className="sub-news-img-box">
-                      <img
-                        loading="lazy"
-                      src={newsPhotos.kemenkeu}
-                        alt="Kemenkeu Mengajar"
-                        className="sub-news-img"
-                      />
-                      <span className="sub-news-tag">Kegiatan Sekolah</span>
-                    </div>
-                    <div className="sub-news-date">
-                      <span>10 Nov 2025</span> • <span>192 Views</span>
-                    </div>
-                    <h4 className="sub-news-title">
-                      Kemenkeu Mengajar 10 Tanamkan Literasi Keuangan di SMKN 1
-                      Bondowoso
-                    </h4>
-                    <p className="sub-news-excerpt">Kementerian Keuangan Republik Indonesia melaksanakan kegiatan Kemenkeu Mengajar ke-10 Tahun 2025.</p>
-                    <div className="sub-news-footer">
-                      <span style={{ fontSize: "10px", color: "#64748b" }}>
-                        SuperAdmin
-                      </span>
-                      <button className="btn-read-sm">
-                        Baca <ArrowRight className="icon-sm" />
-                      </button>
-                    </div>
-                  </div>
+                <div className="slider-controls">
+                  <button onClick={handlePrevAchievement} className="slider-btn" aria-label="Prestasi sebelumnya">
+                    <ChevronLeft className="icon-sm" />
+                  </button>
+                  <button onClick={handleNextAchievement} className="slider-btn" aria-label="Prestasi berikutnya">
+                    <ChevronRight className="icon-sm" />
+                  </button>
                 </div>
               </div>
+            </div>
+          </section>
 
-              <div className="news-sidebar-col">
-                <h3 className="sidebar-title">TRENDING / POPULER</h3>
+          {/* BERITA SECTION */}
+          <section id="berita" className="berita-section">
+            <div className="berita-decor-circle" aria-hidden="true"></div>
+            <div
+              className="section-container"
+              style={{ position: "relative", zIndex: 1 }}
+            >
+              <div className="berita-top-bar">
+                <div>
+                  <h2 className="section-title" id="kabar">
+                    Kabar & <br /> Berita{" "}
+                    <span className="text-orange">Vokasi</span>
+                  </h2>
+                </div>
+                <button
+                  onClick={() => scrollToSection("semua-berita")}
+                  className="btn-all-news"
+                >
+                  Lihat Semua Berita <ArrowRight className="icon-sm" />
+                </button>
+              </div>
 
-                <div className="trending-list">
-                  <div className="trending-item">
-                    <span className="trending-num">01</span>
-                    <div>
-                      <h5 className="trending-item-title">
+              <div className="berita-layout-grid" onClick={openNews}>
+                <div className="news-main-col">
+                  <div className="featured-news-card">
+                    <div className="featured-img-box">
+                      <img
+                        loading="lazy"
+                        src={newsPhotos.mgmp}
+                        alt="Peace Corps USA Event"
+                        className="featured-img"
+                      />
+                      <span className="category-tag-badge">Kegiatan Sekolah</span>
+                    </div>
+                    <div className="featured-news-body">
+                      <div className="meta-stats-row">
+                        <span className="meta-stat-item">
+                          <Calendar className="icon-orange-sm" /> 23 Jul 2026
+                        </span>
+                        <span>•</span>
+                        <span className="meta-stat-item">
+                          <Eye className="icon-orange-sm" /> 192 Views
+                        </span>
+                      </div>
+                      <h3 className="featured-news-title">
+                        Semangat Berkolaborasi, MGMP Bahasa Inggris SMK Kabupaten
+                        Bondowoso Hadirkan Relawan Peace Corps asal USA
+                      </h3>
+                      <p className="featured-news-excerpt">
+                        Pertemuan MGMP Bahasa Inggris SMK Kabupaten Bondowoso
+                        menjadi wadah penguatan kompetensi guru melalui diseminasi
+                        materi Deep Learning oleh Lina Kurniawati, S.Pd. serta
+                        sesi pertukaran budaya (Cultural Exchange)...
+                      </p>
+                      <div className="featured-news-footer">
+                        <span className="author-text">
+                          Penulis:{" "}
+                          <strong style={{ color: "#1e293b" }}>SuperAdmin</strong>
+                        </span>
+                        <button className="btn-read-more">
+                          Baca selengkapnya <ArrowRight className="icon-sm" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="sub-news-grid" id="semua-berita">
+                    <div className="sub-news-card">
+                      <div className="sub-news-img-box">
+                        <img
+                          loading="lazy"
+                          src={newsPhotos.bk}
+                          alt="Sistem BK Terintegrasi"
+                          className="sub-news-img"
+                        />
+                        <span className="sub-news-tag">Kegiatan Sekolah</span>
+                      </div>
+                      <div className="sub-news-date">
+                        <span>01 Aug 2026</span> • <span>192 Views</span>
+                      </div>
+                      <h4 className="sub-news-title">
                         Atasi Antrean Keterlambatan, SMKN 1 Bondowoso Luncurkan
                         Sistem BK Terintegrasi
-                      </h5>
-                      <p className="trending-date">01 Aug 2026</p>
+                      </h4>
+                      <p className="sub-news-excerpt">SMKN 1 Bondowoso meluncurkan Sistem Terintegrasi Bimbingan Konseling berbasis Face Recognition untuk mempercepat presensi siswa.</p>
+                      <div className="sub-news-footer">
+                        <span style={{ fontSize: "10px", color: "#64748b" }}>
+                          SuperAdmin
+                        </span>
+                        <button className="btn-read-sm">
+                          Baca <ArrowRight className="icon-sm" />
+                        </button>
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="trending-item">
-                    <span className="trending-num">02</span>
-                    <div>
-                      <h5 className="trending-item-title">
-                        Debat Calon Ketua Wakil Ketua OSIS SMKN 1 Bondowoso
-                        Periode 2025/2026
-                      </h5>
-                      <p className="trending-date">01 Aug 2026</p>
-                    </div>
-                  </div>
-
-                  <div className="trending-item">
-                    <span className="trending-num gold">03</span>
-                    <div>
-                      <h5 className="trending-item-title gold">
-                        Kemenkeu Mengajar 10 Tanamkan Literasi Keuangan di SMKN
-                        1 Bondowoso
-                      </h5>
-                      <p className="trending-date">01 Aug 2026</p>
-                    </div>
-                  </div>
-
-                  <div className="trending-item">
-                    <span className="trending-num">04</span>
-                    <div>
-                      <h5 className="trending-item-title">
-                        Guru Tamu DKV SMKN 1 Bondowoso Hadirkan Dosen ITS
-                        Surabaya
-                      </h5>
-                      <p className="trending-date">01 Aug 2026</p>
-                    </div>
-                  </div>
-
-                  <div className="trending-item">
-                    <span className="trending-num">05</span>
-                    <div>
-                      <h5 className="trending-item-title">
+                    <div className="sub-news-card">
+                      <div className="sub-news-img-box">
+                        <img
+                          loading="lazy"
+                          src={newsPhotos.asri}
+                          alt="Juara Kebersihan Sekolah"
+                          className="sub-news-img"
+                        />
+                        <span className="sub-news-tag">Prestasi</span>
+                      </div>
+                      <div className="sub-news-date">
+                        <span>23 Jul 2026</span> • <span>192 Views</span>
+                      </div>
+                      <h4 className="sub-news-title">
                         SMK Negeri 1 Bondowoso Meraih Juara 1 Lomba Kebersihan
                         Lingkungan Sekolah
-                      </h5>
-                      <p className="trending-date">01 Aug 2026</p>
+                      </h4>
+                      <p className="sub-news-excerpt">SMKN 1 Bondowoso sukses meraih Juara 1 Lomba Kebersihan Lingkungan Sekolah dalam program ASRI.</p>
+                      <div className="sub-news-footer">
+                        <span style={{ fontSize: "10px", color: "#64748b" }}>
+                          WriterSmakensa
+                        </span>
+                        <button className="btn-read-sm">
+                          Baca <ArrowRight className="icon-sm" />
+                        </button>
+                      </div>
+                    </div>
+
+                    <div className="sub-news-card">
+                      <div className="sub-news-img-box">
+                        <img
+                          loading="lazy"
+                          src={newsPhotos.osis}
+                          alt="Debat OSIS"
+                          className="sub-news-img"
+                        />
+                        <span className="sub-news-tag">Kegiatan Sekolah</span>
+                      </div>
+                      <div className="sub-news-date">
+                        <span>23 Jul 2026</span> • <span>192 Views</span>
+                      </div>
+                      <h4 className="sub-news-title">
+                        Debat Calon Ketua Wakil Ketua OSIS SMKN 1 Bondowoso
+                        Periode 2025/2026
+                      </h4>
+                      <p className="sub-news-excerpt">SMKN 1 Bondowoso melaksanakan kegiatan Debat Calon Ketua dan Wakil Ketua OSIS Periode 2025/2026.</p>
+                      <div className="sub-news-footer">
+                        <span style={{ fontSize: "10px", color: "#64748b" }}>
+                          SuperAdmin
+                        </span>
+                        <button className="btn-read-sm">
+                          Baca <ArrowRight className="icon-sm" />
+                        </button>
+                      </div>
+                    </div>
+
+                    <div className="sub-news-card">
+                      <div className="sub-news-img-box">
+                        <img
+                          loading="lazy"
+                          src={newsPhotos.kemenkeu}
+                          alt="Kemenkeu Mengajar"
+                          className="sub-news-img"
+                        />
+                        <span className="sub-news-tag">Kegiatan Sekolah</span>
+                      </div>
+                      <div className="sub-news-date">
+                        <span>10 Nov 2025</span> • <span>192 Views</span>
+                      </div>
+                      <h4 className="sub-news-title">
+                        Kemenkeu Mengajar 10 Tanamkan Literasi Keuangan di SMKN 1
+                        Bondowoso
+                      </h4>
+                      <p className="sub-news-excerpt">Kementerian Keuangan Republik Indonesia melaksanakan kegiatan Kemenkeu Mengajar ke-10 Tahun 2025.</p>
+                      <div className="sub-news-footer">
+                        <span style={{ fontSize: "10px", color: "#64748b" }}>
+                          SuperAdmin
+                        </span>
+                        <button className="btn-read-sm">
+                          Baca <ArrowRight className="icon-sm" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="news-sidebar-col">
+                  <h3 className="sidebar-title">TRENDING / POPULER</h3>
+
+                  <div className="trending-list">
+                    <div className="trending-item">
+                      <span className="trending-num">01</span>
+                      <div>
+                        <h5 className="trending-item-title">
+                          Atasi Antrean Keterlambatan, SMKN 1 Bondowoso Luncurkan
+                          Sistem BK Terintegrasi
+                        </h5>
+                        <p className="trending-date">01 Aug 2026</p>
+                      </div>
+                    </div>
+
+                    <div className="trending-item">
+                      <span className="trending-num">02</span>
+                      <div>
+                        <h5 className="trending-item-title">
+                          Debat Calon Ketua Wakil Ketua OSIS SMKN 1 Bondowoso
+                          Periode 2025/2026
+                        </h5>
+                        <p className="trending-date">01 Aug 2026</p>
+                      </div>
+                    </div>
+
+                    <div className="trending-item">
+                      <span className="trending-num gold">03</span>
+                      <div>
+                        <h5 className="trending-item-title gold">
+                          Kemenkeu Mengajar 10 Tanamkan Literasi Keuangan di SMKN
+                          1 Bondowoso
+                        </h5>
+                        <p className="trending-date">01 Aug 2026</p>
+                      </div>
+                    </div>
+
+                    <div className="trending-item">
+                      <span className="trending-num">04</span>
+                      <div>
+                        <h5 className="trending-item-title">
+                          Guru Tamu DKV SMKN 1 Bondowoso Hadirkan Dosen ITS
+                          Surabaya
+                        </h5>
+                        <p className="trending-date">01 Aug 2026</p>
+                      </div>
+                    </div>
+
+                    <div className="trending-item">
+                      <span className="trending-num">05</span>
+                      <div>
+                        <h5 className="trending-item-title">
+                          SMK Negeri 1 Bondowoso Meraih Juara 1 Lomba Kebersihan
+                          Lingkungan Sekolah
+                        </h5>
+                        <p className="trending-date">01 Aug 2026</p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        {/* FASILITAS SECTION */}
-        <section id="fasilitas" className="fasilitas-section">
-          <div className="section-container">
-            <div className="fasilitas-header reveal-up">
-              <p className="fasilitas-subtitle">Fasilitas SMKN 1 Bondowoso</p>
-              <h2 className="fasilitas-title">
-                Lingkungan <span className="text-orange">Berkualitas.</span>
-              </h2>
-              <p className="fasilitas-desc">
-                Kami percaya bahwa lingkungan belajar yang representatif adalah
-                kunci dari proses transfer ilmu yang efektif dan menyenangkan.
-              </p>
-            </div>
-
-            <div className="fasilitas-marquee-wrap reveal-up">
-              <div className="fasilitas-row">
-                <div className="fasilitas-track fasilitas-track-right">
-                  {[...FACILITIES_DATA.slice(0, 4), ...FACILITIES_DATA.slice(0, 4)].map((facility, idx) => (
-  <button
-    type="button"
-    key={`top-${facility.id}-${idx}`}
-    className="facility-card"
-    onClick={() => setActiveFacility(facility)}
-    aria-haspopup="dialog"
-    aria-label={`Lihat detail ${facility.title}`}
-  >
-    <div>
-      <div className="facility-img-box">
-        <img loading="lazy" src={facility.image} alt="" className="facility-img" />
-      </div>
-      <div className="facility-card-body">
-        <h3 className="facility-card-title">{facility.title}</h3>
-        <p className="facility-card-desc">{facility.desc}</p>
-      </div>
-    </div>
-  </button>
-))}
-                </div>
-              </div>
-
-              <div className="fasilitas-row">
-                <div className="fasilitas-track fasilitas-track-left">
-  {[...FACILITIES_DATA.slice(4, 8), ...FACILITIES_DATA.slice(4, 8)].map((facility, idx) => (
-    <button
-      type="button"
-      key={`bottom-${facility.id}-${idx}`}
-      className="facility-card"
-      onClick={() => setActiveFacility(facility)}
-      aria-haspopup="dialog"
-      aria-label={`Lihat detail ${facility.title}`}
-    >
-      <div>
-        <div className="facility-img-box">
-          <img
-            loading="lazy"
-            src={facility.image}
-            alt=""
-            className="facility-img"
-          />
-        </div>
-        <div className="facility-card-body">
-          <h3 className="facility-card-title">{facility.title}</h3>
-          <p className="facility-card-desc">{facility.desc}</p>
-        </div>
-      </div>
-    </button>
-  ))}
-</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* MITRA SECTION */}
-        <section className="partners-section">
-          <div className="section-container partners-container reveal-up">
-            <div>
-              <p className="partners-sub">MITRA SMKN 1 BONDOWOSO</p>
-              <h2 className="partners-title">
-                <span className="text-orange">Kemitraan Strategis</span> & Dunia
-                Industri.
-              </h2>
-            </div>
-
-            <div className="mitra-marquee-wrapper">
-              <div className="mitra-marquee-track">
-                {[...PARTNERS_DATA, ...PARTNERS_DATA].map((partner, idx) => (
-                  <div key={idx} className="partner-item">
-                    <img
-                      src={partner.logo}
-                      alt={partner.name}
-                      className="partner-logo"
-                      style={{ maxWidth: partner.width, width: "100%" }}
-                      loading="lazy"
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* KONTAK SECTION */}
-        <section id="kontak" className="kontak-section">
-          <div className="section-container">
-            <div className="kontak-grid">
-              <div className="kontak-info-col">
-                <div>
-                  <p className="kontak-sub">INFORMASI KONTAK</p>
-                  <h2 className="kontak-title">
-                    Jalin <span className="text-orange">Koneksi.</span>
-                  </h2>
-                  <p className="kontak-desc">
-                    Kami terbuka untuk kolaborasi dengan industri (DUDI),
-                    kunjungan studi banding, pendaftaran siswa baru, maupun
-                    pertanyaan umum.
-                  </p>
-                </div>
-
-                <div className="info-cards-list">
-                  <div className="info-card">
-                    <div className="info-icon-box">
-                      <MapPin className="icon-info" />
-                    </div>
-                    <div>
-                      <span className="info-label">Lokasi Utama</span>
-                      <p className="info-val-text">
-                        Jalan HOS. Cokroaminoto No. 110, Kademangan, Kabupaten
-                        Bondowoso, Provinsi Jawa Timur – Indonesia
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="info-card">
-                    <div className="info-icon-box">
-                      <Phone className="icon-info" />
-                    </div>
-                    <div>
-                      <span className="info-label">Telepon Kantor</span>
-                      <p className="info-val-text"><a href="tel:+62332431201">(0332) 431201</a></p>
-                    </div>
-                  </div>
-
-                  <div className="info-card">
-                    <div className="info-icon-box">
-                      <Mail className="icon-info" />
-                    </div>
-                    <div>
-                      <span className="info-label">Email Resmi</span>
-                      <p className="info-val-text">
-                        <a href="mailto:info@smkn1bondowoso.sch.id">info@smkn1bondowoso.sch.id</a>
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="info-card">
-                    <div className="info-icon-box">
-                      <Clock className="icon-info" />
-                    </div>
-                    <div>
-                      <span className="info-label">Jam Operasional</span>
-                      <p className="info-val-text">
-                        Senin – Jumat (07.00 – 15.30 WIB)
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="kontak-form-col reveal-up">
-                <h3 className="form-header-title">
-                  Kirim Pesan & Korespondensi
-                </h3>
-                <p className="form-header-desc">
-                  Isi formulir di bawah untuk menyiapkan pesan melalui aplikasi email Anda.
+          {/* FASILITAS SECTION */}
+          <section id="fasilitas" className="fasilitas-section">
+            <div className="section-container">
+              <div className="fasilitas-header reveal-up">
+                <p className="fasilitas-subtitle">Fasilitas SMKN 1 Bondowoso</p>
+                <h2 className="fasilitas-title">
+                  Lingkungan <span className="text-orange">Berkualitas.</span>
+                </h2>
+                <p className="fasilitas-desc">
+                  Kami percaya bahwa lingkungan belajar yang representatif adalah
+                  kunci dari proses transfer ilmu yang efektif dan menyenangkan.
                 </p>
+              </div>
+
+              <div className="fasilitas-marquee-wrap reveal-up">
+                <div className="fasilitas-row">
+                  <div className="fasilitas-track fasilitas-track-right">
+                    {[...FACILITIES_DATA.slice(0, 4), ...FACILITIES_DATA.slice(0, 4)].map((facility, idx) => (
+                      <button
+                        type="button"
+                        key={`top-${facility.id}-${idx}`}
+                        className="facility-card"
+                        onClick={() => setActiveFacility(facility)}
+                        aria-haspopup="dialog"
+                        aria-label={`Lihat detail ${facility.title}`}
+                      >
+                        <div>
+                          <div className="facility-img-box">
+                            <img loading="lazy" src={facility.image} alt="" className="facility-img" />
+                          </div>
+                          <div className="facility-card-body">
+                            <h3 className="facility-card-title">{facility.title}</h3>
+                            <p className="facility-card-desc">{facility.desc}</p>
+                          </div>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="fasilitas-row">
+                  <div className="fasilitas-track fasilitas-track-left">
+                    {[...FACILITIES_DATA.slice(4, 8), ...FACILITIES_DATA.slice(4, 8)].map((facility, idx) => (
+                      <button
+                        type="button"
+                        key={`bottom-${facility.id}-${idx}`}
+                        className="facility-card"
+                        onClick={() => setActiveFacility(facility)}
+                        aria-haspopup="dialog"
+                        aria-label={`Lihat detail ${facility.title}`}
+                      >
+                        <div>
+                          <div className="facility-img-box">
+                            <img
+                              loading="lazy"
+                              src={facility.image}
+                              alt=""
+                              className="facility-img"
+                            />
+                          </div>
+                          <div className="facility-card-body">
+                            <h3 className="facility-card-title">{facility.title}</h3>
+                            <p className="facility-card-desc">{facility.desc}</p>
+                          </div>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* MITRA SECTION */}
+          <section className="partners-section">
+            <div className="section-container partners-container reveal-up">
+              <div>
+                <p className="partners-sub">MITRA SMKN 1 BONDOWOSO</p>
+                <h2 className="partners-title">
+                  <span className="text-orange">Kemitraan Strategis</span> & Dunia
+                  Industri.
+                </h2>
+              </div>
+
+              <div className="mitra-marquee-wrapper">
+                <div className="mitra-marquee-track">
+                  {[...PARTNERS_DATA, ...PARTNERS_DATA].map((partner, idx) => (
+                    <div key={idx} className="partner-item">
+                      <img
+                        src={partner.logo}
+                        alt={partner.name}
+                        className="partner-logo"
+                        style={{ maxWidth: partner.width, width: "100%" }}
+                        loading="lazy"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* KONTAK SECTION */}
+          <section id="kontak" className="kontak-section">
+            <div className="section-container">
+              <div className="kontak-grid">
+                <div className="kontak-info-col">
+                  <div>
+                    <p className="kontak-sub">INFORMASI KONTAK</p>
+                    <h2 className="kontak-title">
+                      Jalin <span className="text-orange">Koneksi.</span>
+                    </h2>
+                    <p className="kontak-desc">
+                      Kami terbuka untuk kolaborasi dengan industri (DUDI),
+                      kunjungan studi banding, pendaftaran siswa baru, maupun
+                      pertanyaan umum.
+                    </p>
+                  </div>
+
+                  <div className="info-cards-list">
+                    <div className="info-card">
+                      <div className="info-icon-box">
+                        <MapPin className="icon-info" />
+                      </div>
+                      <div>
+                        <span className="info-label">Lokasi Utama</span>
+                        <p className="info-val-text">
+                          Jalan HOS. Cokroaminoto No. 110, Kademangan, Kabupaten
+                          Bondowoso, Provinsi Jawa Timur – Indonesia
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="info-card">
+                      <div className="info-icon-box">
+                        <Phone className="icon-info" />
+                      </div>
+                      <div>
+                        <span className="info-label">Telepon Kantor</span>
+                        <p className="info-val-text"><a href="tel:+62332431201">(0332) 431201</a></p>
+                      </div>
+                    </div>
+
+                    <div className="info-card">
+                      <div className="info-icon-box">
+                        <Mail className="icon-info" />
+                      </div>
+                      <div>
+                        <span className="info-label">Email Resmi</span>
+                        <p className="info-val-text">
+                          <a href="mailto:info@smkn1bondowoso.sch.id">info@smkn1bondowoso.sch.id</a>
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="info-card">
+                      <div className="info-icon-box">
+                        <Clock className="icon-info" />
+                      </div>
+                      <div>
+                        <span className="info-label">Jam Operasional</span>
+                        <p className="info-val-text">
+                          Senin – Jumat (07.00 – 15.30 WIB)
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="kontak-form-col reveal-up">
+                  <h3 className="form-header-title">
+                    Kirim Pesan & Korespondensi
+                  </h3>
+                  <p className="form-header-desc">
+                    Isi formulir di bawah untuk menyiapkan pesan melalui aplikasi email Anda.
+                  </p>
 
                   <form onSubmit={handleSubmitForm} className="form-inputs">
                     <div className="form-row-2col">
@@ -1943,11 +1948,11 @@ Dengan dukungan tenaga pendidik yang profesional, fasilitas berstandar industri,
                       LANJUTKAN KE EMAIL
                     </button>
                   </form>
-                {formSubmitted && <p className="form-success-box" role="status">Draf pesan dibuka melalui aplikasi email. Pesan belum terkirim sampai Anda menekan Kirim di aplikasi tersebut. Jika aplikasi tidak terbuka, hubungi info@smkn1bondowoso.sch.id. Isian formulir tetap tersimpan di halaman ini.</p>}
+                  {formSubmitted && <p className="form-success-box" role="status">Draf pesan dibuka melalui aplikasi email. Pesan belum terkirim sampai Anda menekan Kirim di aplikasi tersebut. Jika aplikasi tidak terbuka, hubungi info@smkn1bondowoso.sch.id. Isian formulir tetap tersimpan di halaman ini.</p>}
+                </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
         </main>
         {/* FOOTER */}
@@ -2084,37 +2089,37 @@ Dengan dukungan tenaga pendidik yang profesional, fasilitas berstandar industri,
           </>}
         </dialog>
         <dialog
-  ref={facilityDialog}
-  className="facility-dialog"
-  aria-labelledby="facility-dialog-title"
-  onClose={() => setActiveFacility(null)}
-  onClick={(e) => {
-    if (e.target === facilityDialog.current) facilityDialog.current.close();
-  }}
->
-  {activeFacility && (
-    <div className="facility-dialog-inner">
-      <button
-        type="button"
-        className="facility-dialog-close"
-        onClick={() => facilityDialog.current.close()}
-        aria-label="Tutup"
-      >
-        <X className="icon-sm" aria-hidden="true" />
-      </button>
-      <img
-        src={activeFacility.image}
-        alt={activeFacility.title}
-        className="facility-dialog-img"
-      />
-      <div className="facility-dialog-body">
-        <span className="facility-dialog-tag">Fasilitas SMKN 1 Bondowoso</span>
-        <h3 id="facility-dialog-title">{activeFacility.title}</h3>
-        <p>{activeFacility.desc}</p>
-      </div>
-    </div>
-  )}
-</dialog>
+          ref={facilityDialog}
+          className="facility-dialog"
+          aria-labelledby="facility-dialog-title"
+          onClose={() => setActiveFacility(null)}
+          onClick={(e) => {
+            if (e.target === facilityDialog.current) facilityDialog.current.close();
+          }}
+        >
+          {activeFacility && (
+            <div className="facility-dialog-inner">
+              <button
+                type="button"
+                className="facility-dialog-close"
+                onClick={() => facilityDialog.current.close()}
+                aria-label="Tutup"
+              >
+                <X className="icon-sm" aria-hidden="true" />
+              </button>
+              <img
+                src={activeFacility.image}
+                alt={activeFacility.title}
+                className="facility-dialog-img"
+              />
+              <div className="facility-dialog-body">
+                <span className="facility-dialog-tag">Fasilitas SMKN 1 Bondowoso</span>
+                <h3 id="facility-dialog-title">{activeFacility.title}</h3>
+                <p>{activeFacility.desc}</p>
+              </div>
+            </div>
+          )}
+        </dialog>
         {/* CHATBOT ASSISTANT */}
         <div className="chatbot-fixed-wrapper">
           {!isChatOpen ? (
