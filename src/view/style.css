@@ -1213,49 +1213,58 @@ section {
 
 .prestasi-bg-marquee {
   position: absolute;
-  inset: -80% -30%;
+  inset: -100% -50%;
   display: flex;
   justify-content: center;
-  gap: 50px;
-  transform: rotate(42deg);
+  gap: 40px;
+  transform: rotate(38deg);
   opacity: .45;
   pointer-events: none;
   will-change: transform;
+  user-select: none;
 }
 
 .prestasi-bg-col {
   display: flex;
   flex-direction: column;
-  gap: 50px;
-  width: 290px;
+  gap: 40px;
+  width: 280px;
   flex-shrink: 0;
   will-change: transform;
 }
 
 .prestasi-bg-col-up {
-  animation: prestasi-scroll-up 80s linear infinite;
+  animation: prestasi-scroll-up 26s linear infinite;
 }
 
 .prestasi-bg-col-down {
-  animation: prestasi-scroll-down 80s linear infinite;
-  margin-top: -180px;
+  animation: prestasi-scroll-down 28s linear infinite;
 }
 
 .prestasi-bg-poster {
-  width: 290px;
+  width: 100%;
   aspect-ratio: 4/5;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 @keyframes prestasi-scroll-up {
-  from { transform: translateY(0); }
-  to { transform: translateY(-50%); }
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, -50%, 0);
+  }
 }
 
 @keyframes prestasi-scroll-down {
-  from { transform: translateY(-50%); }
-  to { transform: translateY(0); }
+  0% {
+    transform: translate3d(0, -50%, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 .prestasi-header-bar {

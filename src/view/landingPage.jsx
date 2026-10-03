@@ -27,53 +27,53 @@ import {
   Radio,
   Users,
 } from "lucide-react";
-import elementKeahlian from "../assets/icon-pres.png";
-import logoTujuan from "../assets/target-arrow.png";
-import logoOtak from "../assets/thinking-high.png";
+import elementKeahlian from "../assets/icon-pres.webp";
+import logoTujuan from "../assets/target-arrow.webp";
+import logoOtak from "../assets/thinking-high.webp";
 import "./style.css";
 import { newsPhotos, facilityPhotos } from "../data/media";
-import iconChar from "../assets/chart-bar.png";
+import iconChar from "../assets/chart-bar.webp";
 import PakAsik from "../assets/pak_asik.webp";
-import posterSikep from "../../Assets websekolah New/Folder Poster Juara (Landing SECTION)/Lomba Sketsa Rancangan Layangan Sikep Tingkat Nasional yang diselenggarakan oleh Himadipsi ISI SURAKARTA 1.png";
-import posterVoli from "../../Assets websekolah New/Folder Poster Juara (Landing SECTION)/Voli Smakensa meraih Juara 1 pada kegiatan Gebyar Olahraga Siswa SMK seKabupaten Bondowoso 1.png";
-import posterKarate from "../../Assets websekolah New/Folder Poster Juara (Landing SECTION)/Juara 2 Karate KEJURPROV FORKI Jawa Timur 2026 di Malang.(1) 1.png";
-import posterPaskibra from "../../Assets websekolah New/Folder Poster Juara (Landing SECTION)/Telah lolos Seleksi Paskibra Kabupaten Bondowoso 1.png";
-import posterGerak from "../../Assets websekolah New/Folder Poster Juara (Landing SECTION)/Juara Harapan II Katagori Putri Lomba Gerak Jalan Pelajar 1.png";
-import posterOrasi from "../../Assets websekolah New/Folder Poster Juara (Landing SECTION)/Juara 1 Lomba Orasi Dalam Rangka Harlah PMII Ke-66 1.png";
-import posterAsri from "../../Assets websekolah New/Folder Poster Juara (Landing SECTION)/Juara 1 Lomba Kebersihan Sekolah Program ASRI 1.png";
+import posterSikep from "../../Assets websekolah New/Folder Poster Juara (Landing SECTION)/Lomba Sketsa Rancangan Layangan Sikep Tingkat Nasional yang diselenggarakan oleh Himadipsi ISI SURAKARTA 1.webp";
+import posterVoli from "../../Assets websekolah New/Folder Poster Juara (Landing SECTION)/Voli Smakensa meraih Juara 1 pada kegiatan Gebyar Olahraga Siswa SMK seKabupaten Bondowoso 1.webp";
+import posterKarate from "../../Assets websekolah New/Folder Poster Juara (Landing SECTION)/Juara 2 Karate KEJURPROV FORKI Jawa Timur 2026 di Malang.(1) 1.webp";
+import posterPaskibra from "../../Assets websekolah New/Folder Poster Juara (Landing SECTION)/Telah lolos Seleksi Paskibra Kabupaten Bondowoso 1.webp";
+import posterGerak from "../../Assets websekolah New/Folder Poster Juara (Landing SECTION)/Juara Harapan II Katagori Putri Lomba Gerak Jalan Pelajar 1.webp";
+import posterOrasi from "../../Assets websekolah New/Folder Poster Juara (Landing SECTION)/Juara 1 Lomba Orasi Dalam Rangka Harlah PMII Ke-66 1.webp";
+import posterAsri from "../../Assets websekolah New/Folder Poster Juara (Landing SECTION)/Juara 1 Lomba Kebersihan Sekolah Program ASRI 1.webp";
 const achievementPosters = [posterSikep, posterVoli, posterKarate, posterPaskibra, posterGerak, posterOrasi, posterAsri];
-import iconTrophy from "../assets/trophy.png";
-import panggungPrestasiIcon from "../../Assets websekolah New/Icon Panggung_Prestasi.png";
-import tropiImg from "../assets/trophy.png"; // Sesuaikan folder/path-nya jika berbeda
-import bgHero from "../assets/main-img/hero-1800.jpg";
-import heroGuru from "../assets/main-img/guru-smkn1.jpg";
-import herosikap from "../assets/main-img/lahansikap2.JPG";
-import heromeeting from "../assets/main-img/ruangmeeting.jpeg";
-import bgHeroMobile from "../assets/hero-960.jpg";
-import posterSikepFull from "../assets/prestasi-dkv-layangan-sikep.jpg";
-import logoSmakensa from "../assets/logo.png";
-import logoLumosh from "../assets/mitra/lumosh.png";
-import logoDpkp from "../assets/mitra/dpkp-bondowoso.png";
-import logoHummatech from "../assets/mitra/hummatech.png";
-import logoAccurate from "../assets/mitra/accurate.png";
-import logoTelkom from "../assets/mitra/telkom-indonesia.png";
-import logoMetroTv from "../assets/mitra/metro-tv-jatim.png";
-import fotoPspt from "../assets/jurusan/psptv.jpeg";
-import fotoMp from "../assets/jurusan/mp.jpeg";
-import fotoLp from "../assets/jurusan/lp.jpeg";
-import fotoDkv from "../assets/jurusan/dkv.jpeg";
-import fotoBd from "../assets/jurusan/bd.jpeg";
-import fotoAkl from "../assets/jurusan/akl.jpeg";
-import fotoTkj from "../assets/jurusan/tkj.jpeg";
-import fotoRpl from "../assets/jurusan/rpl.jpeg";
-import iconAward from "../assets/award.png";
-import usurCircle from "../assets/user-circle.png";
-import iconSparkles from "../assets/sparkles-2.png";
-import logojhic from "../assets/1. LOGO JHIC 2.0.png";
-import logojagoanhosting from "../assets/2. Logo Jagoan Hosting_white.png";
-import logokomdigi from "../assets/3. KOMDIGI_white.png";
-import logogaruda from "../assets/4. Garuda Spark Full Color_white.png";
-import logongalup from "../assets/5. LOGO NGALUP_white.png";
+import iconTrophy from "../assets/trophy.webp";
+import panggungPrestasiIcon from "../../Assets websekolah New/Icon Panggung_Prestasi.webp";
+import tropiImg from "../assets/trophy.webp"; // Sesuaikan folder/path-nya jika berbeda
+import bgHero from "../assets/main-img/hero-1800.webp";
+import heroGuru from "../assets/main-img/guru-smkn1.webp";
+import herosikap from "../assets/main-img/lahansikap2.webp";
+import heromeeting from "../assets/main-img/ruangmeeting.webp";
+import bgHeroMobile from "../assets/hero-960.webp";
+import posterSikepFull from "../assets/prestasi-dkv-layangan-sikep.webp";
+import logoSmakensa from "../assets/logo.webp";
+import logoLumosh from "../assets/mitra/lumosh.webp";
+import logoDpkp from "../assets/mitra/dpkp-bondowoso.webp";
+import logoHummatech from "../assets/mitra/hummatech.webp";
+import logoAccurate from "../assets/mitra/accurate.webp";
+import logoTelkom from "../assets/mitra/telkom-indonesia.webp";
+import logoMetroTv from "../assets/mitra/metro-tv-jatim.webp";
+import fotoPspt from "../assets/jurusan/psptv.webp";
+import fotoMp from "../assets/jurusan/mp.webp";
+import fotoLp from "../assets/jurusan/lp.webp";
+import fotoDkv from "../assets/jurusan/dkv.webp";
+import fotoBd from "../assets/jurusan/bd.webp";
+import fotoAkl from "../assets/jurusan/akl.webp";
+import fotoTkj from "../assets/jurusan/tkj.webp";
+import fotoRpl from "../assets/jurusan/rpl.webp";
+import iconAward from "../assets/award.webp";
+import usurCircle from "../assets/user-circle.webp";
+import iconSparkles from "../assets/sparkles-2.webp";
+import logojhic from "../assets/1. LOGO JHIC 2.0.webp";
+import logojagoanhosting from "../assets/2. Logo Jagoan Hosting_white.webp";
+import logokomdigi from "../assets/3. KOMDIGI_white.webp";
+import logogaruda from "../assets/4. Garuda Spark Full Color_white.webp";
+import logongalup from "../assets/5. LOGO NGALUP_white.webp";
 
 const HERO_SLIDES = [
   { src: heroGuru, alt: "Guru SMKN 1 Bondowoso" },
@@ -1503,7 +1503,7 @@ Dengan dukungan tenaga pendidik yang profesional, fasilitas berstandar industri,
           {/* PRESTASI SECTION */}
           <section id="prestasi" className="prestasi-section">
             <div className="prestasi-bg-marquee" aria-hidden="true">
-              {Array.from({ length: 6 }).map((_, colIndex) => (
+              {Array.from({ length: 8 }).map((_, colIndex) => (
                 <div
                   key={`bgcol-${colIndex}`}
                   className={`prestasi-bg-col ${colIndex % 2 === 0
