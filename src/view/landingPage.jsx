@@ -80,7 +80,7 @@ const HERO_SLIDES = [
   { src: herosikap, alt: "Murid SMKN 1 Bondowoso di lahan sikap" },
   { src: heromeeting, alt: "Ruang meeting SMKN 1 Bondowoso" },
   { src: bgHero, alt: "Upacara siswa SMKN 1 Bondowoso" },
-  
+
 ];
 
 
@@ -362,6 +362,84 @@ function HeroSlideshow({ slides, interval = 6000 }) {
           })}
         </div>
       )}
+    </div>
+  );
+}
+
+function PageLoader({ images = [], minTime = 800, maxTime = 8000 }) {
+  const [progress, setProgress] = useState(0);
+  const [hiding, setHiding] = useState(false);
+  const [gone, setGone] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+
+    const total = images.length + 1; // semua gambar + event window load
+    const start = performance.now();
+    let loaded = 0;
+    let finished = false;
+    const timers = [];
+
+    const finish = () => {
+      if (finished) return;
+      finished = true;
+      const wait = Math.max(0, minTime - (performance.now() - start));
+      timers.push(setTimeout(() => {
+        setProgress(100);
+        setHiding(true);
+      }, wait));
+    };
+
+    const step = () => {
+      loaded += 1;
+      setProgress(Math.min(100, Math.round((loaded / total) * 100)));
+      if (loaded >= total) finish();
+    };
+
+    images.forEach((src) => {
+      const img = new Image();
+      img.onload = step;
+      img.onerror = step; // gambar gagal tetap dihitung supaya tidak macet
+      img.src = src;
+    });
+
+    if (document.readyState === "complete") step();
+    else window.addEventListener("load", step, { once: true });
+
+    // cadangan: kalau koneksi lambat, tetap tutup setelah maxTime
+    timers.push(setTimeout(finish, maxTime));
+
+    return () => {
+      timers.forEach(clearTimeout);
+      window.removeEventListener("load", step);
+      document.body.style.overflow = "";
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!hiding) return;
+    document.body.style.overflow = "";
+    const t = setTimeout(() => setGone(true), 700);
+    return () => clearTimeout(t);
+  }, [hiding]);
+
+  if (gone) return null;
+
+  return (
+    <div
+      className={`page-loader ${hiding ? "hide" : ""}`}
+      role="status"
+      aria-live="polite"
+      aria-label="Memuat halaman"
+    >
+      <div className="page-loader-inner">
+        <img src={logoSmakensa} alt="" className="page-loader-logo" />
+        <p className="page-loader-title">SMKN 1 BONDOWOSO</p>
+        <div className="page-loader-bar">
+          <div className="page-loader-fill" style={{ width: `${progress}%` }} />
+        </div>
+        <p className="page-loader-percent">{progress}%</p>
+      </div>
     </div>
   );
 }
@@ -821,6 +899,9 @@ function LandingPage() {
   return (
     <>
       <div className="app-root">
+        <PageLoader
+          images={[logoSmakensa, ...HERO_SLIDES.map((s) => s.src)]}
+        />
         <a href="#beranda" className="skip-link">Lewati ke konten utama</a>
         {/* HEADER NAVBAR */}
         <header className={`navbar ${isScrolled || mobileMenuOpen ? "scrolled menu-open" : "transparent"}`}>
