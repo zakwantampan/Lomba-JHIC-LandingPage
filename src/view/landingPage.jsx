@@ -45,7 +45,10 @@ const achievementPosters = [posterSikep, posterVoli, posterKarate, posterPaskibr
 import iconTrophy from "../assets/trophy.png";
 import panggungPrestasiIcon from "../../Assets websekolah New/Icon Panggung_Prestasi.png";
 import tropiImg from "../assets/trophy.png"; // Sesuaikan folder/path-nya jika berbeda
-import bgHero from "../assets/hero-1800.jpg";
+import bgHero from "../assets/main-img/hero-1800.jpg";
+import heroGuru from "../assets/main-img/guru-smkn1.jpg";
+import herosikap from "../assets/main-img/lahansikap2.JPG";
+import heromeeting from "../assets/main-img/ruangmeeting.jpeg";
 import bgHeroMobile from "../assets/hero-960.jpg";
 import posterSikepFull from "../assets/prestasi-dkv-layangan-sikep.jpg";
 import logoSmakensa from "../assets/logo.png";
@@ -66,6 +69,20 @@ import fotoRpl from "../assets/jurusan/rpl.jpeg";
 import iconAward from "../assets/award.png";
 import usurCircle from "../assets/user-circle.png";
 import iconSparkles from "../assets/sparkles-2.png";
+import logojhic from "../assets/1. LOGO JHIC 2.0.png";
+import logojagoanhosting from "../assets/2. Logo Jagoan Hosting_white.png";
+import logokomdigi from "../assets/3. KOMDIGI_white.png";
+import logogaruda from "../assets/4. Garuda Spark Full Color_white.png";
+import logongalup from "../assets/5. LOGO NGALUP_white.png";
+
+const HERO_SLIDES = [
+  { src: heroGuru, alt: "Guru SMKN 1 Bondowoso" },
+  { src: herosikap, alt: "Murid SMKN 1 Bondowoso di lahan sikap" },
+  { src: heromeeting, alt: "Ruang meeting SMKN 1 Bondowoso" },
+  { src: bgHero, alt: "Upacara siswa SMKN 1 Bondowoso" },
+  
+];
+
 
 const MAJOR_VISUALS = {
   rpl: {
@@ -288,6 +305,64 @@ function TypeWriter({ text, speed = 18, delay = 300 }) {
       ))}
       {displayed.length < text.length && <span className="typewriter-cursor">|</span>}
     </span>
+  );
+}
+
+const TILE_COLS = 10;
+const TILE_ROWS = 6;
+
+function HeroSlideshow({ slides, interval = 6000 }) {
+  const [current, setCurrent] = useState(0);
+  const [prev, setPrev] = useState(null);
+  const currentRef = useRef(0);
+  const clearRef = useRef(null);
+
+  // preload semua foto supaya transisi tidak berkedip
+  useEffect(() => {
+    slides.forEach((s) => { const img = new Image(); img.src = s.src; });
+  }, [slides]);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const timer = setInterval(() => {
+      const old = currentRef.current;
+      const next = (old + 1) % slides.length;
+      currentRef.current = next;
+      setPrev(old);
+      setCurrent(next);
+      clearTimeout(clearRef.current);
+      clearRef.current = setTimeout(() => setPrev(null), 1700);
+    }, interval);
+    return () => { clearInterval(timer); clearTimeout(clearRef.current); };
+  }, [slides.length, interval]);
+
+  return (
+    <div className="hero-slides" style={{ "--cols": TILE_COLS, "--rows": TILE_ROWS }}>
+      {/* foto baru (di belakang) */}
+      <img
+        className="hero-bg-image"
+        src={slides[current].src}
+        alt={slides[current].alt}
+        width="1800"
+        height="1180"
+        fetchPriority="high"
+      />
+
+      {/* foto lama dipecah jadi kotak, lalu mengecil */}
+      {prev !== null && (
+        <div className="hero-tiles" key={current} aria-hidden="true">
+          {Array.from({ length: TILE_ROWS * TILE_COLS }).map((_, i) => {
+            const r = Math.floor(i / TILE_COLS);
+            const c = i % TILE_COLS;
+            return (
+              <div className="hero-tile" key={i} style={{ "--r": r, "--c": c }}>
+                <img src={slides[prev].src} alt="" />
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -941,17 +1016,7 @@ function LandingPage() {
           {/* HERO SECTION */}
           <section id="beranda" className="hero-section" tabIndex={-1}>
             <div className="hero-bg-overlay">
-              <picture className="hero-picture">
-                <source media="(max-width: 600px)" srcSet={bgHeroMobile} />
-                <img
-                  fetchPriority="high"
-                  width="1800"
-                  height="1180"
-                  src={bgHero}
-                  alt="SMKN 1 Bondowoso Student Ceremony"
-                  className="hero-bg-image"
-                />
-              </picture>
+              <HeroSlideshow slides={HERO_SLIDES} interval={4000} />
               <div className="hero-gradient-overlay"></div>
             </div>
 
@@ -1361,8 +1426,8 @@ Dengan dukungan tenaga pendidik yang profesional, fasilitas berstandar industri,
                 <div
                   key={`bgcol-${colIndex}`}
                   className={`prestasi-bg-col ${colIndex % 2 === 0
-                      ? "prestasi-bg-col-up"
-                      : "prestasi-bg-col-down"
+                    ? "prestasi-bg-col-up"
+                    : "prestasi-bg-col-down"
                     }`}
                 >
                   {Array.from({ length: 14 }).map((_, imgIndex) => (
@@ -1964,6 +2029,22 @@ Dengan dukungan tenaga pendidik yang profesional, fasilitas berstandar industri,
               <p className="footer-sub">
                 Sekolah Menengah Kejuruan · Bondowoso
               </p>
+            </div>
+            <div class="lomba-strip reveal delay-1">
+              <p className="lomba-strip-label">Supported by :</p>
+              <div className="lomba-strip-wrap">
+                <div className="lomba-main-logo">
+                  <img src={logojhic} alt="JHIC 2.0" title="Jagoan Hosting Innovation Competition 2026"
+                    className="logo-jhic" loading="lazy" /> {/* <-- Tambahkan garis miring di akhir */}
+                </div>
+                <div className="lomba-divider" aria-hidden="true"></div>
+                <div className="lomba-supporters">
+                  <img src={logojagoanhosting} alt="Jagoan Hosting" title="Jagoan Hosting" loading="lazy" /> {/* <-- Tambahkan garis miring */}
+                  <img src={logokomdigi} alt="KOMDIGI" title="Kementerian Komunikasi dan Digital RI" loading="lazy" /> {/* <-- Tambahkan garis miring */}
+                  <img src={logogaruda} alt="Garuda Spark" title="Garuda Spark Innovation Hub" loading="lazy" /> {/* <-- Tambahkan garis miring */}
+                  <img src={logongalup} alt="Ngalup.co" title="Ngalup.co" loading="lazy" /> {/* <-- Tambahkan garis miring */}
+                </div>
+              </div>
             </div>
 
             <div className="footer-links-grid">
