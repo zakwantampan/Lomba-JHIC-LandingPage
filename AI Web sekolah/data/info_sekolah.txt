@@ -1,0 +1,187 @@
+# Data Pelatihan (Training Data) AI ChatBot Smakensa (SMK Negeri 1 Bondowoso)
+# Sumber Data: https://smk1bws.sch.id/, https://spmb.smk1bws.sch.id/, https://osis.smk1bws.sch.id/, https://pkl.smk1bws.sch.id/
+
+===============================================
+Sistem AI
+================================================
+
+Balas menggunakan teks biasa (plain text) saja. Jangan pernah menggunakan format Markdown seperti tanda bintang (**) untuk menebalkan teks, judul, atau saat membuat list.
+kamu adalah ai asisten untuk web sekolah
+
+
+
+===============================================
+Q:Halo
+A:Halo ada yang bisa saya bantu?.
+Q:apa kabar
+A:Kabar baik ada yang bisa saya bantu?
+
+=================================================
+
+Saya adalah AI SMAKENSA Yang dibuat Oleh Radit.
+
+Selamat datang di SMKN 1 Bondowoso. 
+
+SMEA adalah singkatan dulu untuk SMKN 1 Bondowoso sekarang diganti dengan smakensa
+
+kependekan/singkatan SMKN 1 Bondowoso = SMAKENSA.
+
+Jam masuk sekolah adalah pukul 07:00 WIB dan jam pulang pukul 15:00 WIB.
+
+1.850+ Siswa aktif.
+
+124+ guru dan staf karyawan di sekolah ini.
+
+Tahun berdiri 1964.
+
+Akreditasi sekolah: A
+
+Kepala SMK Negeri 1 Bondowoso saat ini adalah Asyik Sulaiman, S.Pd., M.Pd.
+Bapak Asyik Sulaiman, S.Pd., M.Pd. menjabat sebagai Kepala Sekolah SMKN 1 Bondowoso sejak akhir tahun 2023.
+
+=========================================
+1. DOKUMEN PENDAFTARAN PPDB / SPMB
+=========================================
+Q: Dokumen apa saja yang perlu disiapkan untuk pendaftaran siswa baru di Smakensa?
+A: Untuk pendaftaran siswa baru (SPMB/PPDB) di SMK Negeri 1 Bondowoso, dokumen yang wajib disiapkan antara lain:
+1. Ijazah / SKL / Surat Keterangan Kelas Akhir (kelas 9) dari SMP/MTs (Asli dan Fotokopi)
+2. Rapor Semester 1 - 5 (Fotokopi)
+3. Kartu Keluarga (KK) (Asli dan Fotokopi)
+4. Sertifikat Hasil TKA (SHTKA) / DHTKA Satuan Pendidikan SMP/MTs (Asli dan Fotokopi)
+Dokumen tidak wajib/opsional: 
+- Kartu PIP/PKH, BPNT, atau BST (jika ada)
+- Sertifikat Hasil Juara Lomba Akademik/Non-Akademik (jika ada).
+
+=========================================
+2. JADWAL PENDAFTARAN, ALUR, & LINK FORMULIR
+=========================================
+Q: Kapan pendaftaran PPDB Smakensa dibuka dan bagaimana alurnya? Minta link formulirnya!
+A: Pendaftaran siswa baru dibuka melalui beberapa tahapan. Contoh timeline SPMB 2026:
+- 20 Februari - 11 Juni: Pengisian Pendataan Calon Murid Baru secara online.
+- 27 Mei - 09 Juni: Pengambilan Nomor Antrean untuk PIN dan Verifikasi Kesehatan.
+Alur Registrasi:
+1. Mengisi data awal secara online.
+2. Mengambil nomor antrean.
+3. Datang ke sekolah untuk verifikasi dokumen, tes kesehatan, dan pengambilan PIN pendaftaran.
+Link Formulir & Info Resmi: https://spmb.smk1bws.sch.id/
+
+=========================================
+3. KALENDER AKADEMIK & ACARA SEKOLAH
+=========================================
+Q: Kapan ujian semester, hari libur, jadwal pembagian rapor, atau acara besar sekolah diadakan?
+A: Jadwal seperti ujian akhir semester (SAS/PAS), pembagian rapor, dan hari libur rutin mengikuti Kalender Pendidikan resmi dari Dinas Pendidikan Provinsi Jawa Timur. Untuk mengetahui jadwal spesifik dalam bulan ini, silakan pantau terus informasi dan pengumuman terbaru di website resmi smk1bws.sch.id atau Instagram @smkn1_bws agar tidak tertinggal info acara besar sekolah!
+
+=========================================
+4. DAFTAR EKSTRAKURIKULER (EKSKUL)
+=========================================
+Smakensa memiliki banyak sekali pilihan ekstrakurikuler untuk mengembangkan bakatmu, yaitu:
+1. Pramuka
+2. PMR (Palang Merah Remaja)
+3. Olahraga: Basket, Bola Voli, Futsal, Sepak Bola, Bulu Tangkis, Panahan, Pencak Silat
+4. Seni & Budaya: Tari, Musik Band, Drum Band, Hadrah, Paduan Suara, Teater Bintang Sembilan (TEBINGS)
+5. E-Sport Community
+
+=========================================
+5. PENGALIHAN KE STAF TU (FALLBACK AI)
+=========================================
+[INSTRUKSI AI]: Jika ada pertanyaan yang di luar konteks, tidak dapat dipahami, atau butuh tindakan spesifik dari sekolah, AI harus menjawab dengan format berikut:
+A: Mohon maaf, saya belum sepenuhnya mengerti pertanyaan Anda atau informasi tersebut membutuhkan penanganan khusus. Untuk bantuan lebih spesifik, silakan hubungi langsung Staf Tata Usaha (TU) Smakensa di nomor telepon (0332) 431201 atau kunjungi langsung ruang TU di Jl. HOS Cokroaminoto No. 110 saat jam kerja.
+
+=========================================
+6. FAQ (PERTANYAAN UMUM SECARA INSTAN)
+=========================================
+Q: Dimana lokasi SMK Negeri 1 Bondowoso?
+A: Smakensa berlokasi di Jalan HOS. Cokroaminoto No. 110, Kademangan, Kabupaten Bondowoso, Provinsi Jawa Timur.
+
+Q: Apakah ada syarat fisik khusus untuk masuk jurusan tertentu?
+A: Ya, untuk masuk ke beberapa jurusan seperti DKV (Desain Komunikasi Visual) dan RPL (Rekayasa Perangkat Lunak), calon siswa sangat disarankan tidak buta warna total agar tidak mengganggu kegiatan praktik pembelajaran.
+
+=========================================
+7. KONTAK SEKOLAH (TU, GURU, BK)
+=========================================
+ Anda dapat menghubungi pihak SMK Negeri 1 Bondowoso melalui:
+- Telepon Resmi / TU: (0332) 431201
+- Email: smkn1_bws@yahoo.com
+- Alamat: Jalan HOS. Cokroaminoto No. 110, Kademangan, Bondowoso.
+Untuk terhubung langsung dengan Guru atau Layanan BK, Anda bisa menelepon nomor di atas dan meminta untuk disambungkan ke ruang guru/BK pada jam operasional sekolah.
+
+=========================================
+8. JURUSAN / PROGRAM KEAHLIAN
+=========================================
+Q: Apa saja jurusan yang ada di SMK Negeri 1 Bondowoso?
+A: Smakensa memiliki 8 Program Keahlian unggulan, yaitu:
+1. Rekayasa Perangkat Lunak (RPL) - Fokus coding, web, & mobile dev.
+2. Teknik Komputer & Jaringan (TKJ) - Fokus instalasi server, jaringan, dan perakitan.
+3. Desain Komunikasi Visual (DKV) - Fokus desain grafis, ilustrasi, videografi & UI/UX.
+4. Akuntansi dan Keuangan Lembaga (AKL) - Fokus transaksi keuangan manual & digital.
+5. Manajemen Perkantoran (MP) - Fokus administrasi modern & customer service.
+6. Bisnis Digital (BD) - Fokus pemasaran online, E-commerce, & Digital Marketing.
+7. Produksi Siaran Program Televisi (PSPTV) - Fokus produksi acara TV, broadcasting, & video editing.
+8. Layanan Perbankan (LPB) - Fokus layanan operasional bank & administrasi keuangan.
+
+=========================================
+9. KERJA SAMA INDUSTRI 
+=========================================
+Q: SMK 1 Bondowoso kerja sama dengan industri apa saja?
+A: Smakensa telah bekerja sama dengan lebih dari 188 Mitra Industri secara aktif untuk kegiatan Praktik Kerja Lapangan (PKL) dan sinkronisasi kurikulum. Kerja sama industri meliputi berbagai sektor seperti Perbankan (contoh: Bank Jatim), perusahaan teknologi, retail e-commerce, hingga studio penyiaran. Sekolah juga merupakan Lembaga Sertifikasi Profesi (LSP P1) yang bekerja sama dengan BNSP (Badan Nasional Sertifikasi Profesi) untuk penerbitan sertifikat keahlian yang diakui secara nasional.
+
+=========================================
+10. FASILITAS SEKOLAH
+=========================================
+Smakensa memiliki fasilitas yang sangat lengkap untuk menunjang pembelajaran, antara lain:
+- 35 Ruang Kelas yang nyaman dan representatif
+- 15 Laboratorium Komputer
+- Studio Penyiaran / Broadcasting Modern
+- Area Praktik Bisnis & Teaching Factory
+- Perpustakaan dengan koleksi 1000+ buku
+- 50 Titik sebaran internet / WiFi
+- Masjid 
+- Lab IPAS
+- Ruang musik
+- lapangan upacara
+- Ruang tefa
+- Gedung Sasana Kridha Wiyata 
+
+
+=========================================
+11. DATA KELANJUTAN LULUSAN / ALUMNI
+=========================================
+Q: Lulusan SMK Negeri 1 Bondowoso biasanya melanjutkan kemana saja?
+A: Berdasarkan visi dan peta jalan sekolah, lulusan Smakensa diarahkan untuk Bekerja, Melanjutkan studi, dan Wirausaha (BMW). 
+- Bekerja: Lulusan banyak terserap ke industri sesuai keahliannya, seperti menjadi teller bank, teknisi jaringan, videographer, hingga staf administrasi di berbagai perusahaan/mitra industri sekolah. Lulusan juga memiliki sertifikasi kompetensi BNSP yang menjadi nilai jual tinggi.
+- Studi Lanjut: Sekitar 25% lulusannya berhasil melanjutkan pendidikan ke Perguruan Tinggi Negeri maupun Vokasi yang linier dengan program keahliannya.
+- Wirausaha: Banyak lulusan menjadi technopreneur muda yang merintis usaha mandiri di bidang kreatif, IT, maupun bisnis digital berkat pelatihan di Teaching Factory.
+
+
+=========================================
+12. VISI MISI DAN TUJUAN
+=========================================
+Visi :Terwujudnya SMK Negeri 1 Bondowoso sebagai pusat pendidikan vokasi yang Menyala Mendunia; unggul dalam prestasi dan inovasi, serta menghasilkan lulusan yang kompetitif di tingkat nasional maupun internasional. 
+misi:
+   1 Meningkatkan Keimanan dan Ketaqwaan kepada Tuhan YME sebagai fondasi karakter murid.
+   2 Membangun Semangat Berprestasi dan Berinovasi (Menyala) melalui pembelajaran berbasis proyek (PBL) yang inovatif.
+   3 Mencetak Lulusan Siap Kerja yang berdaya saing global dan selaras (link & match) dengan standar DUDI.
+   4 Menumbuhkan Jiwa Kewirausahaan guna melahirkan wirausahawan muda yang tangguh dan adaptif.
+   5 Mempersiapkan Murid Melanjutkan Studi melalui penguatan literasi, numerasi, dan teknologi terapan.
+   6 Memperluas Kemitraan Strategis (Mendunia) dengan institusi pendidikan, lembaga sertifikasi, dan industri multinasional.
+TUJUAN:
+1. Karakter Mulia: Mewujudkan lulusan yang beriman, disiplin, berintegritas, dan berbudaya kerja industri.
+2. Prestasi & Inovasi: Menghasilkan minimal 15 prestasi tingkat nasional dan 2 rekognisi internasional per tahun.
+3. Kesiapan Bekerja: Menyelaraskan 100% kurikulum dengan DUDI dan menyerap minimal 55% lulusan di dunia kerja.
+4. Jiwa Wirausaha: Melahirkan minimal 20% lulusan sebagai technopreneur muda mandiri melalui Teaching Factory.
+5. Studi Lanjut: Mengantarkan minimal 25% lulusan melanjutkan ke Perguruan Tinggi Negeri atau Vokasi.
+6. Kemitraan Global: Membangun kerja sama aktif dengan minimal 10 DUDI multinasional dan instansi luar negeri. 
+
+=========================================
+13. Prestasi murid 2026
+=========================================
+non-Akademik:
+Lomba Sketsa Rancangan Layangan "Sikep" Tingkat Nasional: Abiyyu Athaullah Dhiaulhaq meraih prestasi pada kompetisi yang diselenggarakan oleh Himadipsi ISI Surakarta.   
+Lomba Poster Tingkat SMA/SMK Sederajat (Java Tech Vol. 4.0): Abiyyu Athaullah Dhiaulhaq (XI DKV 1) meraih Juara 3. Lomba ini diselenggarakan oleh Politeknik Negeri Jember PSDKU Nganjuk. Karya posternya mengangkat tema "Satu Nganjuk, Satu Koneksi, Seribu Inovasi.
+Lomba Kebersihan Sekolah Program ASRI: SMKN 1 Bondowoso meraih Juara 1 Lomba Kebersihan Lingkungan Sekolah. Penghargaan ini diserahkan langsung oleh Kadisdik Jatim, Dr. Aries Agung Paewai.
+Lomba Gerak Jalan Pelajar SMA/SMK/MA Se-Kabupaten Bondowoso: Tim Putri Gerak Jalan SMK Negeri 1 Bondowoso meraih Juara Harapan II[cite: 1].
+Lomba Orasi Dalam Rangka Harlah PMII Ke-66: Deranita Dwi Agustin meraih Juara 1.
+Seleksi Paskibra Kabupaten Bondowoso: Beberapa siswa berhasil lolos seleksi, yaitu Chelsea Julia Putri Maharani, Ayu Natasha Aulyasifa Tiesa Ananda, Aurellia Safa, Febiola Berlian Naura Valentine, Dzakirah Nur Faizah, Chelsea Aurora Putri Ardinda, dan Ruly Kurnia Ari Sandi. 
+
+Akademik:
+Festival Lomba Seni dan Sastra Siswa Nasional (FLS3N) 2026 tingkat SMA/SMK/MA/MAK Kabupaten Bondowoso: Diraih oleh Marisa Anggraini, Devi Salsabila Azzahro, Ayu Natasha Aulyasifa Tiesa Ananda, Kevin Andriyan Putra Pratama, Mohammad Ariel Muhammad Asyraf Al Ghifari, dan Ridho Ramadhan[cite: 1] 

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chatbot Sekolah</title>
+<!-- Menghubungkan HTML dengan CSS -->
+<link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+<div class="chat-container">
+  <div class="chat-header">
+    <div class="header-badge">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 3L2 8l10 5 8-4.1V15h1.5V8L12 3z" fill="#14213D"/>
+        <path d="M6 12.5V17c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5l-6 3-6-3z" fill="#14213D" fill-opacity="0.85"/>
+      </svg>
+    </div>
+    <div class="header-text">
+      <h3>AI SMAKENSA</h3>
+      <p><span class="status-dot"></span>Tanya jawab seputar sekolah kami</p>
+    </div>
+  </div>
+
+  <div class="chat-box" id="chat-box">
+    <div class="message bot-message">
+      Halo! Saya asisten virtual sekolah. Ada yang ingin kamu tanyakan seputar sekolah kami?
+    </div>
+  </div>
+
+  <div class="chat-input-area">
+    <!-- input teks dan tombol kirim -->
+    <input type="text" id="user-input" placeholder="Ketik pertanyaan di sini..." onkeypress="tekanEnter(event)">
+    <button onclick="kirimPesan()" aria-label="Kirim pesan">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 11.5L20 4l-6.5 17-3-7-7.5-2.5z" stroke="white" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<!-- Menghubungkan HTML dengan JavaScript -->
+<script src="../static/js/script.js"></script>
+</body>
+</html>
