@@ -3416,3 +3416,6 @@ body:has(dialog[open]) {
     min-height: 100dvh;
   }
 }
+/* Status pengiriman chatbot */
+.btn-send-chat:disabled { opacity: .5; cursor: not-allowed; }
+.chat-bubble { white-space: pre-wrap; overflow-wrap: anywhere; }

@@ -934,6 +934,10 @@ function LandingPage() {
     },
   ]);
   const [chatInput, setChatInput] = useState("");
+  const [isChatSending, setIsChatSending] = useState(false);
+  const chatRequest = useRef(null);
+
+  useEffect(() => () => chatRequest.current?.abort(), []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -1003,7 +1007,7 @@ function LandingPage() {
   useEffect(() => {
     if (chatBody.current)
       chatBody.current.scrollTop = chatBody.current.scrollHeight;
-  }, [chatMessages, isChatOpen]);
+  }, [chatMessages, isChatOpen, isChatSending]);
   useEffect(() => {
     if (article) articleDialog.current?.showModal();
   }, [article]);
@@ -1128,59 +1132,42 @@ function LandingPage() {
     }
   };
 
-  // Chatbot responses logic
-  const handleSendMessage = (e) => {
+  // Kirim pertanyaan ke Flask melalui proxy Vite.
+  const handleSendMessage = async (e) => {
     e.preventDefault();
-    if (!chatInput.trim()) return;
-
     const userText = chatInput.trim();
-    const newMessages = [...chatMessages, { sender: "user", text: userText }];
-    setChatMessages(newMessages);
+    if (!userText || chatRequest.current) return;
+
+    const controller = new AbortController();
+    chatRequest.current = controller;
+    setIsChatSending(true);
+    setChatMessages((prev) => [...prev, { sender: "user", text: userText }]);
     setChatInput("");
+    const timeout = setTimeout(() => controller.abort(), 30000);
 
-    // Generate automated Bot response
-    setTimeout(() => {
-      let botResponse =
-        "Terima kasih atas pertanyaan Anda. Untuk informasi lebih rinci, Anda dapat menghubungi sekretariat SMKN 1 Bondowoso di (0332) 431201 atau email ke info@smkn1bondowoso.sch.id.";
-
-      const lower = userText.toLowerCase();
-      if (
-        lower.includes("jurusan") ||
-        lower.includes("prodi") ||
-        lower.includes("rpl") ||
-        lower.includes("keahlian")
-      ) {
-        botResponse =
-          'SMKN 1 Bondowoso memiliki 8 Program Keahlian unggulan: RPL, AKL, LP, TKJ, BD, DKV, MP, dan PSPT. Anda dapat melihat detail tiap jurusan pada bagian "Jurusan" di halaman ini!';
-      } else if (
-        lower.includes("lokasi") ||
-        lower.includes("alamat") ||
-        lower.includes("dimana")
-      ) {
-        botResponse =
-          "SMKN 1 Bondowoso berlokasi di Jalan HOS. Cokroaminoto No. 110, Kademangan, Kabupaten Bondowoso, Jawa Timur.";
-      } else if (
-        lower.includes("kepala sekolah") ||
-        lower.includes("prakata") ||
-        lower.includes("pimpinan")
-      ) {
-        botResponse =
-          "Kepala SMKN 1 Bondowoso saat ini adalah Bapak Asyik Sulaiman, S.Pd, M.Pd.";
-      } else if (
-        lower.includes("daftar") ||
-        lower.includes("ppdb") ||
-        lower.includes("spmb") ||
-        lower.includes("masuk")
-      ) {
-        botResponse =
-          "Pendaftaran siswa baru (PPDB) dibuka sesuai jadwal dinas pendidikan Jawa Timur. Silakan pantau berkala situs ini atau hubungi Panitia PPDB SMKN 1 Bondowoso.";
+    try {
+      const response = await fetch("/tanya-bot", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ pertanyaan: userText }),
+        signal: controller.signal,
+      });
+      if (!response.ok) throw new Error("Server chatbot tidak tersedia");
+      const data = await response.json();
+      if (typeof data.jawaban !== "string" || !data.jawaban.trim()) {
+        throw new Error("Jawaban chatbot tidak valid");
       }
-
-      setChatMessages((prev) => [
-        ...prev,
-        { sender: "bot", text: botResponse },
-      ]);
-    }, 600);
+      setChatMessages((prev) => [...prev, { sender: "bot", text: data.jawaban }]);
+    } catch (error) {
+      const text = error.name === "AbortError"
+        ? "Maaf, jawaban membutuhkan waktu terlalu lama. Silakan coba lagi."
+        : "Maaf, asisten belum bisa dihubungi. Silakan coba lagi sebentar.";
+      setChatMessages((prev) => [...prev, { sender: "bot", text }]);
+    } finally {
+      clearTimeout(timeout);
+      chatRequest.current = null;
+      setIsChatSending(false);
+    }
   };
 
   const activeAch =
@@ -2960,7 +2947,7 @@ Dengan dukungan tenaga pendidik yang profesional, fasilitas berstandar industri,
                   </div>
                   <div>
                     <h4 className="bot-header-title">Asisten SMAKENSA</h4>
-                    <p className="bot-status-text">Jawaban otomatis</p>
+                    <p className="bot-status-text">Asisten informasi sekolah</p>
                   </div>
                 </div>
                 <button
@@ -2995,6 +2982,11 @@ Dengan dukungan tenaga pendidik yang profesional, fasilitas berstandar industri,
                     </div>
                   </div>
                 ))}
+                {isChatSending && (
+                  <div className="chat-msg-row bot" role="status">
+                    <div className="chat-bubble bot">Sedang menyiapkan jawaban...</div>
+                  </div>
+                )}
               </div>
 
               <form onSubmit={handleSendMessage} className="chatbot-input-form">
@@ -3006,11 +2998,13 @@ Dengan dukungan tenaga pendidik yang profesional, fasilitas berstandar industri,
                   value={chatInput}
                   onChange={(e) => setChatInput(e.target.value)}
                   className="chat-input"
+                  maxLength={2000}
                 />
                 <button
                   type="submit"
                   className="btn-send-chat"
                   aria-label="Kirim pertanyaan"
+                  disabled={isChatSending || !chatInput.trim()}
                 >
                   <Send className="icon-sm" />
                 </button>
